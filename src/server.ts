@@ -6,6 +6,44 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+import { MongoClient, ObjectId, WithId, Filter, UpdateFilter } from 'mongodb';
+
+interface User {
+  _id?: ObjectId; // optional when inserting
+  name: string;
+  email: string;
+}
+
+async function demo() {
+  const uri = process.env['MONGO_URI'] || 'mongodb://localhost:27017';
+  const client = new MongoClient(uri);
+  await client.connect();
+
+  const db = client.db('mydb');
+  const users = db.collection<User>('users'); // collection typed as User
+
+  // Insert
+  const insertResult = await users.insertOne({ name: 'Alice', email: 'alice@example.com' });
+  const newId: ObjectId = insertResult.insertedId;
+
+  // Find one (result type is WithId<User> | null)
+  const user = await users.findOne({ _id: newId } as Filter<User>) as WithId<User> | null;
+
+  // Find many -> WithId<User>[]
+  const all = await users.find({}).toArray();
+
+  // Update (typed UpdateFilter)
+  const updateRes = await users.updateOne(
+    { _id: newId } as Filter<User>,
+    { $set: { email: 'alice@new.com' } } as UpdateFilter<User>,
+  );
+
+  await client.close();
+}
+
+
+
+
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
