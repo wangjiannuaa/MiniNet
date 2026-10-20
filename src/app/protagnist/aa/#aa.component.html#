@@ -1,0 +1,9 @@
+<p>aa works!</p>
+<div class="bittorrentpocket">
+  <div class="bittorrentlogo">{{bttt.bittorrentlogo}}</div>
+  <div class="bittorrentsn">{{bttt.bittorrentsn}}</div>
+    <div class="bittorrentvalue"
+	 [ngClass]="btttvalueclass">
+      {{bttt.bittorrentvalue}}
+    </div>
+</div>

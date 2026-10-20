@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-aardvark',
+  standalone: false,
+  styleUrl: './aardvark.component.css',
+  templateUrl: './aardvark.component.html',
+})
+export class Aardvark {}

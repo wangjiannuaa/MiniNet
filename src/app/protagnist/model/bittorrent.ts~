@@ -1,0 +1,10 @@
+export class Bittorrent {
+ 
+    constructor(public bittorrentlogo:string,
+	       public bittorrentsn:string,
+    public bittorrentvalue:number){
+    }
+
+    HereUseDollar(){return false;}
+    HereUseRMB(){return true;}
+}

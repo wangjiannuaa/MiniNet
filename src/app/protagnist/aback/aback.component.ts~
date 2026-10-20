@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-aback',
+  standalone: false,
+  styleUrl: './aback.component.css',
+  templateUrl: './aback.component.html',
+})
+export class Aback {}

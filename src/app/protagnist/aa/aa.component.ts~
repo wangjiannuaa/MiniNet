@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-aa',
+  standalone: false,
+  styleUrl: './aa.component.css',
+  templateUrl: './aa.component.html',
+})
+export class AA {}

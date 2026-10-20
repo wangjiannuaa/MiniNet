@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-president',
+  standalone: false,
+  styleUrl: './president.component.css',
+  templateUrl: './president.component.html',
+})
+export class PresidentComponent {}
