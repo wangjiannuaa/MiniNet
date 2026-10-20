@@ -2,14 +2,15 @@ import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { App } from './app.component';
-
+import {MatSlideToggle} from '@angular/material/slide-toggle';
 @NgModule({
   declarations: [
     App
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+      AppRoutingModule,
+       MatSlideToggle
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
