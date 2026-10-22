@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-repl',
+  standalone: false,
+  styleUrl: './repl.component.css',
+  templateUrl: './repl.component.html',
+})
+export class REPLComponent {}

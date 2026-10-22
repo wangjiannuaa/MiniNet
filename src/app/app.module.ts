@@ -4,8 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { App } from './app.component';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { PresidentComponent } from './president/president.component';
+import { REPLComponent } from './facade/repl/repl.component';
 @NgModule({
-  declarations: [App, PresidentComponent],
+  declarations: [App, PresidentComponent, REPLComponent],
   imports: [BrowserModule, AppRoutingModule, MatSlideToggle],
   providers: [provideBrowserGlobalErrorListeners(), provideClientHydration()],
   bootstrap: [App],
