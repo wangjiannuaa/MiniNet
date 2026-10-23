@@ -1,9 +1,13 @@
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
+.repl-form {
+  
+  position: absolute;
+  content: "";
+  height: 126px;
+  width: 62px;
+  left: 4px;
+  bottom: 4px;
+  background-color: yellow;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 
-.example-full-width {
-  width: 100%;
-}
