@@ -12,7 +12,7 @@ import { DatepickerInlineCalendarComponent} from './inside/datepicker-inline-cal
 
 @NgModule({
   declarations: [App, PresidentComponent, REPLComponent,DatepickerInlineCalendarComponent],
-    imports: [BrowserModule,FacadeModule,AppRoutingModule,MatDatepickerModule,MatCardModule],
+  imports: [BrowserModule,FacadeModule,AppRoutingModule,MatDatepickerModule,MatCardModule],
   providers: [provideBrowserGlobalErrorListeners(), provideClientHydration(),provideNativeDateAdapter()],
   bootstrap: [App],
 })

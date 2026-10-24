@@ -1,11 +1,10 @@
 .repl-form {
   
   position: absolute;
-  content: "";
-  height: 126px;
-  width: 62px;
-  left: 4px;
-  bottom: 4px;
+  height: 62px;
+  width: 168px;
+  left: 24px;
+  bottom: 80px;
   background-color: yellow;
   -webkit-transition: .4s;
   transition: .4s;

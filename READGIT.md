@@ -1,4 +1,6 @@
-//view the history file
+//view history
+git log --oneline origin/master
+//view the commited file
 git show HEAD:filename
 //find the filename's blob
 git rev-parse HEAD or
@@ -11,3 +13,12 @@ git diff bloba blobb
 git restore filename (--source master~2)
 //restore from commit to both index and worktree
 git checkout filename or git restore --source=HEAD --staged --worktree filename
+
+
+//look out!
+git remote add other-repo url
+git fetch other-repo
+git log other-repo/branch-name
+git cherry-pick <commit-hash> --contitnue/--abort/--quit --edit --signoff --no-commit(为了合并) -m parent-number(指出目的节点)
+（要按照时间顺序进行）
+
