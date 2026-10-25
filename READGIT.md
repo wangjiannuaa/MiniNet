@@ -23,7 +23,7 @@ git cherry-pick <commit-hash> --contitnue/--abort/--quit --edit --signoff --no-c
 （要按照时间顺序进行）
 
 //所有commits无论位于何branch构成同一个网络，entries就是headers，
-//headers有到remote headers的tracks 也就是.git/branches
+//headers有到remote headers的tracks 也就是git config -l
 git branch -vv //当前分支是否跟踪vtov远程分支
 git branch -r --list //当前远程（-r）分支
 git fetch origin//解决远程origin/main不存在的问题
