@@ -22,3 +22,10 @@ git log other-repo/branch-name
 git cherry-pick <commit-hash> --contitnue/--abort/--quit --edit --signoff --no-commit(为了合并) -m parent-number(指出目的节点)
 （要按照时间顺序进行）
 
+//所有commits无论位于何branch构成同一个网络，entries就是headers，
+//headers有到remote headers的tracks
+git branch -vv //当前分支是否跟踪vtov远程分支
+git branch -r --list //当前远程（-r）分支
+git fetch origin//解决远程origin/main不存在的问题
+
+
