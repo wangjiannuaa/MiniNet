@@ -2,15 +2,30 @@ import { Component,OnInit} from '@angular/core';
 import { MatCardHarness } from '@angular/material/card/testing';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+
+export class token {
+    public value:string="";
+    
+        constructor(){}
+}
+
+export class tokenring {
+    public ring:token[];
+    
+    constructor(length:number){
+	this.ring=new Array<token>(length);
+    }
+
+}
+
+
+
 @Component({
   selector: 'bw-repl',
   standalone: false,
   styleUrl: './repl.component.css',
   templateUrl: './repl.component.html',
 })
-
-
-
 export class REPLComponent implements OnInit {
     public needsomething:string="";
 
@@ -20,10 +35,12 @@ export class REPLComponent implements OnInit {
 
     main(event: Event):void{
 	console.log(`The user pressed: ${event.target}.value`);
+	console.log(this.needsomething);
 
     }
     keyuphandler(event: Event):void{
 	console.log(`The user pressed: ${event}.key`);
+	
     }
 
     
