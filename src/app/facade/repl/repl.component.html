@@ -4,8 +4,9 @@
     <label>May I</label>
     <input type="text"
            placeholder="Pick one"
-	   (keyup)="main($event)"
-	  
+	   (keydown.enter)="main($event)"
+	   (keyup)="keyuphandler($event)"
+	   
 	   >
     
 </form>

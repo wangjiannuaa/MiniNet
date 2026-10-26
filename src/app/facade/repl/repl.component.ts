@@ -2,7 +2,6 @@ import { Component,OnInit} from '@angular/core';
 import { MatCardHarness } from '@angular/material/card/testing';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-
 @Component({
   selector: 'bw-repl',
   standalone: false,
@@ -13,15 +12,18 @@ import { Observable } from 'rxjs';
 
 
 export class REPLComponent implements OnInit {
-    private needsomething:string="";
+    public needsomething:string="";
 
     ngOnInit() {
     }
     constructor(){}
 
-    main(event: KeyboardEvent):void{
-	
-	console.log(this.needsomething);
+    main(event: Event):void{
+	console.log(`The user pressed: ${event.target}.value`);
+
+    }
+    keyuphandler(event: Event):void{
+	console.log(`The user pressed: ${event}.key`);
     }
 
     
