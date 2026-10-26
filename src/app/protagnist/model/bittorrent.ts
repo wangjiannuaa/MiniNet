@@ -1,4 +1,4 @@
-import {Product} from './product'
+import {Product} from '../../protagnist/model/product'
 export class Bittorrent {
     public bittorrentlogo:string;
     public bittorrentsn:string;

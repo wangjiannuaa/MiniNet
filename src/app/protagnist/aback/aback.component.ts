@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Expert } from '../model/expert'
+//import { Expert } from '../model/expert'
 @Component({
   selector: 'bw-aback',
   standalone: false,
