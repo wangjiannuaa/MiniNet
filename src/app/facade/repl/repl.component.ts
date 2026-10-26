@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { MatCardHarness } from '@angular/material/card/testing';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -9,12 +9,22 @@ import { Observable } from 'rxjs';
   styleUrl: './repl.component.css',
   templateUrl: './repl.component.html',
 })
+
+
+
 export class REPLComponent implements OnInit {
- 
+    private needsomething:string="";
 
     ngOnInit() {
-
     }
+    constructor(){}
+
+    main(event: KeyboardEvent):void{
+	
+	console.log(this.needsomething);
+    }
+
+    
 }
 
 /*
