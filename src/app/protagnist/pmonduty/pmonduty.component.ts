@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-pmonduty',
+  standalone: false,
+  styleUrl: './pmonduty.component.css',
+  templateUrl: './pmonduty.component.html',
+})
+export class PMondutyComponent {}

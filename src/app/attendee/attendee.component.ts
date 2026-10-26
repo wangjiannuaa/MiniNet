@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-attendee',
+  standalone: false,
+  styleUrl: './attendee.component.css',
+  templateUrl: './attendee.component.html',
+})
+export class AttendeeComponent {}

@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-pagee',
+  standalone: false,
+  styleUrl: './pagee.component.css',
+  templateUrl: './pagee.component.html',
+})
+export class PageeComponent {}

@@ -3,19 +3,27 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-
 import { ProductService } from './services/product-service.service';
 
 import { ProtagnistRoutingModule } from './protagnist-routing.module';
 import { AAComponent } from './aa/aa.component';
 import { AardvarkComponent } from './aardvark/aardvark.component';
 import { AbackComponent } from './aback/aback.component';
-
+import { PageeComponent } from './pagee/pagee.component';
+import { ProducteeComponent } from './productee/productee.component';
+import { PMondutyComponent } from './pmonduty/pmonduty.component';
 
 @NgModule({
-  declarations: [AAComponent, AardvarkComponent, AbackComponent],
-  imports: [CommonModule, ProtagnistRoutingModule,FormsModule,HttpClientModule],
+  declarations: [
+    AAComponent,
+    AardvarkComponent,
+    AbackComponent,
+    PageeComponent,
+    ProducteeComponent,
+    PMondutyComponent,
+  ],
+  imports: [CommonModule, ProtagnistRoutingModule, FormsModule, HttpClientModule],
   exports: [AAComponent, AardvarkComponent, AbackComponent],
-  providers:[ProductService]
+  providers: [ProductService],
 })
 export class ProtagnistModule {}

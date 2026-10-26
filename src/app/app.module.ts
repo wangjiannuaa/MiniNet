@@ -5,15 +5,28 @@ import { App } from './app.component';
 import { PresidentComponent } from './president/president.component';
 import { REPLComponent } from './facade/repl/repl.component';
 import { FacadeModule } from './facade/facade.module';
-import { MatDatepickerModule} from '@angular/material/datepicker';
-import { MatCardModule} from '@angular/material/card';
-import { provideNativeDateAdapter} from '@angular/material/core';
-import { DatepickerInlineCalendarComponent} from './inside/datepicker-inline-calendar/datepicker-inline-calendar.component'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { DatepickerInlineCalendarComponent } from './inside/datepicker-inline-calendar/datepicker-inline-calendar.component';
+import { StorieeComponent } from './storiee/storiee.component';
+import { AttendeeComponent } from './attendee/attendee.component';
 
 @NgModule({
-  declarations: [App, PresidentComponent, REPLComponent,DatepickerInlineCalendarComponent],
-  imports: [BrowserModule,FacadeModule,AppRoutingModule,MatDatepickerModule,MatCardModule],
-  providers: [provideBrowserGlobalErrorListeners(), provideClientHydration(),provideNativeDateAdapter()],
+  declarations: [
+    App,
+    PresidentComponent,
+    REPLComponent,
+    DatepickerInlineCalendarComponent,
+    StorieeComponent,
+    AttendeeComponent,
+  ],
+  imports: [BrowserModule, FacadeModule, AppRoutingModule, MatDatepickerModule, MatCardModule],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideClientHydration(),
+    provideNativeDateAdapter(),
+  ],
   bootstrap: [App],
 })
 export class AppModule {}
