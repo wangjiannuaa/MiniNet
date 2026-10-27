@@ -1,7 +1,7 @@
 import { Component,OnInit} from '@angular/core';
-import { MatCardHarness } from '@angular/material/card/testing';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 export class token {
     public value:string="";
@@ -26,16 +26,25 @@ export class tokenring {
   styleUrl: './repl.component.css',
   templateUrl: './repl.component.html',
 })
+
+
 export class REPLComponent implements OnInit {
-    public needsomething:string="";
 
     ngOnInit() {
     }
-    constructor(){}
+    constructor(private http:HttpClient){
+	
+	
+    }
 
     main(event: Event):void{
 	console.log(`The user pressed: ${event.target}.value`);
-	console.log(this.needsomething);
+
+	let REPLSyntax = {};
+	this.http.get<any>(`/api/repl:syntax`).subscribe((res)=> {REPLSyntax=res});
+
+	console.log(REPLSyntax);	
+	
 
     }
     keyuphandler(event: Event):void{

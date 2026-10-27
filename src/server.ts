@@ -61,6 +61,13 @@ const angularApp = new AngularNodeAppEngine();
  * });
  * ```
  */
+app.get('/api/repl:syntax', (req, res) => {
+    // Handle API request
+res.status(200).json({code:"2"});
+});
+
+
+
 
 /**
  * Serve static files from /browser

@@ -1,13 +1,11 @@
-
-<form class="repl-form">
- <p>repl never surrender!</p>
-    <label>May I</label>
-    <input type="text"
-           placeholder="Pick one"
+<div class="repl-input">
+    <label for="#REPLInput">May I
+    <input type="searchBox"
+           placeholder="needsomething"
+	   id="#REPLInput"
+	   name="REPLInput"
 	   (keydown.enter)="main($event)"
 	   (keyup)="keyuphandler($event)"
-	   [(value)]="needsomething"
 	   >
-    
-</form>
-
+    </label>
+</div>
