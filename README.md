@@ -2,6 +2,8 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.3.
 
+ng new wingtrie --file-name-style-guide=2016 --prefix=bw --routing=true --ssr=true --standalone=false
+
 ## Development server
 
 To start a local development server, run:
