@@ -12,6 +12,7 @@ import { AbackComponent } from './aback/aback.component';
 import { PageeComponent } from './pagee/pagee.component';
 import { ProducteeComponent } from './productee/productee.component';
 import { PMondutyComponent } from './pmonduty/pmonduty.component';
+import { LicenseeComponent } from './licensee/licensee.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PMondutyComponent } from './pmonduty/pmonduty.component';
     PageeComponent,
     ProducteeComponent,
     PMondutyComponent,
+    LicenseeComponent,
   ],
   imports: [CommonModule, ProtagnistRoutingModule, FormsModule, HttpClientModule],
   exports: [AAComponent, AardvarkComponent, AbackComponent],

@@ -32,8 +32,8 @@ git fetch origin//解决远程origin/main不存在的问题
 //查看index，同义词cached，staged(git add)
 git ls-files --stage
 //为当前或者指定工作树建立和操纵观众虚拟工作树林
-git worktree add -b new-feature ../new-feature/issue-123 [当前或者指定branch]
-//按照叠放规则进行切换
+git worktree add -b new-feature ../new-feature/issue-123 [当前或者指定主管branch]
+//按照叠放规则进行切换旁观执事员工branch
 pushd ../new-feature/issue-123
 # ... hack hack hack ...
 $ git commit -a -m "hack"
