@@ -1,11 +1,16 @@
+<form>
 <div class="repl-input">
     <label for="#REPLInput">May I
-    <input type="searchBox"
+    <input type="search"
            placeholder="needsomething"
 	   id="#REPLInput"
+	   reqiured
 	   name="REPLInput"
+	   ngModel
 	   (keydown.enter)="main($event)"
 	   (keyup)="keyuphandler($event)"
+	   
 	   >
     </label>
 </div>
+</form>

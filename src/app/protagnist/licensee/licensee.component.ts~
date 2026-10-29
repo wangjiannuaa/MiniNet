@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-licensee',
+  standalone: false,
+  styleUrl: './licensee.component.css',
+  templateUrl: './licensee.component.html',
+})
+export class Licensee {}

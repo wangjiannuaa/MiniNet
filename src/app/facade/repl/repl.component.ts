@@ -1,4 +1,4 @@
-import { Component,OnInit} from '@angular/core';
+import { Component,OnInit,Input,ChangeDetectionStrategy} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -24,12 +24,13 @@ export class tokenring {
   selector: 'bw-repl',
   standalone: false,
   styleUrl: './repl.component.css',
-  templateUrl: './repl.component.html',
+    templateUrl: './repl.component.html',
+    changeDetection: ChangeDetectionStrategy.Default,
 })
 
 
 export class REPLComponent implements OnInit {
-
+    @Input()  public REPLInput:string="op";
     ngOnInit() {
     }
     constructor(private http:HttpClient){
@@ -44,7 +45,7 @@ export class REPLComponent implements OnInit {
 	this.http.get<any>(`/api/repl:syntax`).subscribe((res)=> {REPLSyntax=res});
 
 	console.log(REPLSyntax);	
-	
+	console.log(this.REPLInput);
 
     }
     keyuphandler(event: Event):void{
