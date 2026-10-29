@@ -25,17 +25,18 @@ export class tokenring {
   standalone: false,
   styleUrl: './repl.component.css',
     templateUrl: './repl.component.html',
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 
 export class REPLComponent implements OnInit {
-    @Input()  public REPLInput:string="op";
+    private  prompt:string = "coarse";
+    @Input()  public REPLInput:string;
     ngOnInit() {
     }
     constructor(private http:HttpClient){
 	
-	
+	this.REPLInput=this.prompt;
     }
 
     main(event: Event):void{
@@ -43,16 +44,19 @@ export class REPLComponent implements OnInit {
 
 	let REPLSyntax = {};
 	this.http.get<any>(`/api/repl:syntax`).subscribe((res)=> {REPLSyntax=res});
+	this.REPLInput=JSON.stringify(REPLSyntax);
 
-	console.log(REPLSyntax);	
-	console.log(this.REPLInput);
-
+	
     }
     keyuphandler(event: Event):void{
 	console.log(`The user pressed: ${event}.key`);
 	
     }
 
+    networkhandler():void{
+	
+	
+    }
     
 }
 
