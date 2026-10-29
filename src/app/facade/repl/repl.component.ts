@@ -1,4 +1,4 @@
-import { Component,OnInit,Input,ChangeDetectionStrategy} from '@angular/core';
+import { Component,OnInit,Input, ElementRef,ViewChild,AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -24,38 +24,39 @@ export class tokenring {
   selector: 'bw-repl',
   standalone: false,
   styleUrl: './repl.component.css',
-    templateUrl: './repl.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './repl.component.html'
 })
 
 
-export class REPLComponent implements OnInit {
-    private  prompt:string = "coarse";
-    @Input()  public REPLInput:string;
+export class REPLComponent implements OnInit,AfterViewInit {
+
+    private  REPLSyntax:string ="";
+ 
     ngOnInit() {
-    }
-    constructor(private http:HttpClient){
+
+	this.http.get<any>(`/api/repl:syntax`).subscribe((res)=> {this.REPLSyntax=JSON.stringify(res);});
 	
-	this.REPLInput=this.prompt;
+    }
+    constructor(private http:HttpClient,private REPLInputElement:ElementRef){
+	
     }
 
     main(event: Event):void{
 	console.log(`The user pressed: ${event.target}.value`);
 
-	let REPLSyntax = {};
-	this.http.get<any>(`/api/repl:syntax`).subscribe((res)=> {REPLSyntax=res});
-	this.REPLInput=JSON.stringify(REPLSyntax);
 
-	
     }
     keyuphandler(event: Event):void{
 	console.log(`The user pressed: ${event}.key`);
 	
     }
 
+    ngAfterViewInit(){
+	this.networkhandler();
+    }
     networkhandler():void{
-	
-	
+
+	this.REPLInputElement.nativeElement.querySelector('#IDREPLInput').value=this.REPLSyntax;
     }
     
 }
