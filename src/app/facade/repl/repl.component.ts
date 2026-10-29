@@ -1,7 +1,8 @@
-import { Component,OnInit,Input, ElementRef,ViewChild,AfterViewInit } from '@angular/core';
+import { Component,OnInit,Input, ElementRef, AfterViewInit ,AfterViewChecked,AfterContentInit,AfterContentChecked } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class token {
     public value:string="";
@@ -28,7 +29,7 @@ export class tokenring {
 })
 
 
-export class REPLComponent implements OnInit,AfterViewInit {
+export class REPLComponent implements OnInit,AfterViewInit ,AfterViewChecked,AfterContentInit,AfterContentChecked {
 
     private  REPLSyntax:string ="";
  
@@ -37,7 +38,7 @@ export class REPLComponent implements OnInit,AfterViewInit {
 	this.http.get<any>(`/api/repl:syntax`).subscribe((res)=> {this.REPLSyntax=JSON.stringify(res);});
 	
     }
-    constructor(private http:HttpClient,private REPLInputElement:ElementRef){
+    constructor(private http:HttpClient,private REPLInputElement:ElementRef,private snackbar:MatSnackBar){
 	
     }
 
@@ -52,13 +53,15 @@ export class REPLComponent implements OnInit,AfterViewInit {
     }
 
     ngAfterViewInit(){
-	this.networkhandler();
-    }
-    networkhandler():void{
-
 	this.REPLInputElement.nativeElement.querySelector('#IDREPLInput').value=this.REPLSyntax;
     }
-    
+
+    ngAfterViewChecked():void{}
+    ngAfterContentInit():void{
+
+	this.snackbar.open('content init','close',{duration:3000});
+    }
+    ngAfterContentChecked():void{}
 }
 
 /*
