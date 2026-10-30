@@ -1,4 +1,5 @@
-//三个纸杯的魔术和若干观众的模仿
+git format-patch -3  --stdout  | git imap-send 以及.gitconfig配置imap
+//故事特点：三个纸杯的魔术和若干观众的模仿
 //view history
 git log --oneline origin/master
 //view the commited file
@@ -35,7 +36,13 @@ git ls-files --stage
 git worktree add -b new-feature ../new-feature/issue-123 [当前或者指定主管branch]
 //按照叠放规则进行切换旁观执事员工branch
 pushd ../new-feature/issue-123
-# ... hack hack hack ...
+# ... hack hack hack ... 
 $ git commit -a -m "hack"
 popd
 git worktree remove ../new-feature/issue-123
+//hard reset 操作执行后没有垃圾收集之前可以用reflog找出hash并分支融合恢复
+git reset --hard HEAD@{n}
+git reflog //找出hash
+git reset --hard hash
+或者更常用的
+git reset --hard ORIG_HEAD
