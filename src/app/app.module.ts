@@ -1,25 +1,25 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { App } from './app.component';
-import { PresidentComponent } from './president/president.component';
-import { REPLComponent } from './facade/repl/repl.component';
-import { FacadeModule } from './facade/facade.module';
+import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
-import { provideNativeDateAdapter } from '@angular/material/core';
-import { DatepickerInlineCalendarComponent } from './inside/datepicker-inline-calendar/datepicker-inline-calendar.component';
+import { AppRoutingModule } from './app-routing.module';
+import { FacadeModule } from './facade/facade.module';
 import { StorieeComponent } from './storiee/storiee.component';
 import { AttendeeComponent } from './attendee/attendee.component';
+import { App } from './app.component';
+import { PresidentComponent } from './president/president.component';
+import { DatepickerInlineCalendarComponent } from './inside/datepicker-inline-calendar/datepicker-inline-calendar.component';
+import { AICommandHistoryListComponent } from './facade/aicommand-history-list/aicommand-history-list.component';
 
 @NgModule({
   declarations: [
     App,
     PresidentComponent,
-    REPLComponent,
     DatepickerInlineCalendarComponent,
     StorieeComponent,
     AttendeeComponent,
+    AICommandHistoryListComponent
   ],
   imports: [BrowserModule, FacadeModule, AppRoutingModule, MatDatepickerModule, MatCardModule],
   providers: [
