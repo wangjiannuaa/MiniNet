@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
+
 export class token {
     public value:string="";
     
@@ -30,7 +32,6 @@ export class tokenring {
 
 
 export class REPLComponent implements OnInit,AfterViewInit ,AfterViewChecked,AfterContentInit,AfterContentChecked {
-
     private  REPLSyntax:string ="";
  
     ngOnInit() {
@@ -64,37 +65,4 @@ export class REPLComponent implements OnInit,AfterViewInit ,AfterViewChecked,Aft
     ngAfterContentChecked():void{}
 }
 
-/*
-import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import { OverlayContainer } from '@angular/cdk/overlay';
 
-
-
-@Component({
-  selector: 'bw-repl',
-  standalone:false,
-  templateUrl: 'repl.component.html',
-  styleUrls: ['repl.component.css'],
-})
-export class REPLComponent implements OnInit {
-  myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
-
-  ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
-  }
-}
-*/
