@@ -1,9 +1,9 @@
 git format-patch -3  --stdout  | git imap-send 以及.gitconfig配置imap
-//故事特点：三个纸杯的魔术和若干观众的模仿
+//故事特点：三个纸杯的魔术和若干观众的模仿,以及对parity的醍醐，比如主要分支开发商，从远端分支（祖）pull古董，作为开发基础；其他运营商也就是若干观众，从远端分支（祖）fetch新产品，与本地特色分支融合merge后上传push改进新产品。
 //view history
 git log --oneline origin/master
 //view the commited file
-git show HEAD:filename
+git show HEAD:filename,以及或git show 远程库/branch:src/server.ts
 //find the filename's blob
 git rev-parse HEAD or
 git ls-tree -r HEAD //-r recurse
