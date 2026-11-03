@@ -1,0 +1,5 @@
+
+<input
+  [value]="name"
+  >
+<p>{{name}} aicommand-history-list works!</p>
