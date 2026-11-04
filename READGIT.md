@@ -48,3 +48,8 @@ git reflog //找出hash
 git reset --hard hash
 或者更常用的
 git reset --hard ORIG_HEAD
+//head knowledge（穿越社交火线）沉湎私服游戏
+every time you explicitly checkout 
+a commit using its hash, or 
+if you checkout a tag, 
+HEAD will go into a detached state.
