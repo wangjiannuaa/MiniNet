@@ -49,7 +49,13 @@ git reset --hard hash
 或者更常用的
 git reset --hard ORIG_HEAD
 //head knowledge（穿越社交火线）沉湎私服游戏
+git show HEAD=@ --oneline
+或者git status
 every time you explicitly checkout 
 a commit using its hash, or 
-if you checkout a tag, 
+if you checkout a tag, or rebase
 HEAD will go into a detached state.
+"Recovering" from a detached HEAD state 
+is simple: switch back to an existing 
+branch or create a new one 
+from where you're currently at.
