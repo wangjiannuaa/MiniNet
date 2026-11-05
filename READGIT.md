@@ -59,3 +59,12 @@ HEAD will go into a detached state.
 is simple: switch back to an existing 
 branch or create a new one 
 from where you're currently at.
+
+//git push 避免overwrite
+//修改某个commit的comments并同步
+git rebase i HEAD~3修改三个提交的comments内容
+git push --force-with-lease origin main（或者HEAD，或者:） （--dry-run预演）
+//否则push不能推送古董,可以通过expect设置一个租约ref lease（不等于lock一个ref）来实施push
+git push --force-with-lease=main:expect origin
+
+//git pull 进行merge
