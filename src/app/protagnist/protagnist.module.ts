@@ -13,6 +13,7 @@ import { PageeComponent } from './pagee/pagee.component';
 import { ProducteeComponent } from './productee/productee.component';
 import { PMondutyComponent } from './pmonduty/pmonduty.component';
 import { LicenseeComponent } from './licensee/licensee.component';
+import { CuisineComponent } from './cuisine-component/cuisine-component.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { LicenseeComponent } from './licensee/licensee.component';
     ProducteeComponent,
     PMondutyComponent,
     LicenseeComponent,
+    CuisineComponent,
   ],
   imports: [CommonModule, ProtagnistRoutingModule, FormsModule, HttpClientModule],
   exports: [AAComponent, AardvarkComponent, AbackComponent],
