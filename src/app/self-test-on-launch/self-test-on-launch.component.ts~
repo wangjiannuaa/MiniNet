@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-self-test-on-launch',
+  standalone: false,
+  styleUrl: './self-test-on-launch.component.scss',
+  templateUrl: './self-test-on-launch.component.html',
+})
+export class SelfTestOnLaunch {}

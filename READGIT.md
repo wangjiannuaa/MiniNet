@@ -68,3 +68,5 @@ git push --force-with-lease origin main（或者HEAD，或者:） （--dry-run�
 git push --force-with-lease=main:expect origin
 
 //git pull 进行merge
+//简化push提交
+git config --local push.default simple
