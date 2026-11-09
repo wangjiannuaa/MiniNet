@@ -13,6 +13,58 @@ interface User {
   name: string;
   email: string;
 }
+ const enum cuisinecommand {
+    startup,
+    endup,
+    tuneup,
+    tunedown
+  }
+interface CuisinePlugin {
+
+
+  precommand():void;
+  timerstart():void;
+  timerstop():void;
+  command():void;
+  postcommand():void;
+}
+interface ShoppingPlugin {}
+interface WordingPlugin{}
+
+//displayed as an variety of iconbutton
+interface addon {
+  register():void;
+  deregister():void;
+
+}
+class Measurement {
+    constructor(){}
+}
+class Estimation {
+    constructor(){}
+}
+
+//reshuffling starting point
+class MotherBoard implements CuisinePlugin, ShoppingPlugin, WordingPlugin,addon{
+
+  constructor(){}
+  precommand():void{};
+  timerstart():void{};
+  timerstop():void{};
+  command():void{};
+  postcommand():void{};
+  register():void{};
+  deregister():void{};
+
+
+}
+
+
+
+
+
+
+
 
 async function demo() {
   const uri = process.env['MONGO_URI'] || 'mongodb://localhost:27017';
