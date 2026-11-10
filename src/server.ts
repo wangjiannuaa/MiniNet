@@ -48,7 +48,7 @@ interface devicedriver extends selftestonlaunch{
 
 
 class CuisineDevice implements devicedriver {
-   declare devicedrivername:string;
+   declare public devicedrivername:string;
   constructor(name:string){this.devicedrivername=name;}
   selftest():string{return "pass";}
   precommand():void{}
@@ -59,7 +59,7 @@ class CuisineDevice implements devicedriver {
 
 }
 class ShoppingDevice implements devicedriver {
-   declare devicedrivername:string;
+   declare public devicedrivername:string;
   constructor(name:string){this.devicedrivername=name;}
   selftest():string{return "pass";}
   precommand():void{}
@@ -69,7 +69,7 @@ class ShoppingDevice implements devicedriver {
   postcommand():void{}
 }
 class WordingDevice implements devicedriver {
- declare devicedrivername:string;
+ declare public devicedrivername:string;
   constructor(name:string){this.devicedrivername=name;}
   selftest():string{return "pass";}
   precommand():void{}
@@ -96,7 +96,7 @@ interface Estimation extends tool{
 class MotherBoard implements plugin,addon,devicedriver{
  public brandname:string;
   public typename:string;
-  declare devicedrivername:string;
+  declare public devicedrivername:string;
 
   constructor(brandname:string,typename:string,devicedrivername:string){
     this.brandname=brandname;
@@ -114,7 +114,14 @@ class MotherBoard implements plugin,addon,devicedriver{
   register():void{}
   deregister():void{}
 
-  precommand():void{}
+  precommand():void{
+
+    app.get('/api/selftest:syntax', (req, res) => {
+    // Handle API request
+      res.status(200).json({selftest:instance.selftest()});
+    });
+
+  }
   timerstart():void{}
   timerstop():void{}
   command():void{}
@@ -122,7 +129,6 @@ class MotherBoard implements plugin,addon,devicedriver{
 
 }
 
-const instance=new MotherBoard("prod","com","org");
 
 
 
@@ -182,10 +188,7 @@ app.get('/api/repl:syntax', (req, res) => {
 res.status(200).json({code:"2"});
 });
 
-app.get('/api/selftest:syntax', (req, res) => {
-    // Handle API request
-  res.status(200).json({selftest:instance.selftest()});
-});
+
 
 
 /**
@@ -210,6 +213,12 @@ app.use((req, res, next) => {
     )
     .catch(next);
 });
+
+const instance=new MotherBoard("prod","com","org");
+instance.precommand();
+
+
+
 
 /**
  * Start the server if this module is the main entry point, or it is ran via PM2.
