@@ -1,21 +1,19 @@
-import { Component } from '@angular/core';
+import { Component , Input } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-
+import { LauncherService } from './launcher-service.service';
 
 export interface PeriodicElement {
   name: string;
   position: number;
-  weight: number;
-  symbol: string;
+  status: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-
+/*const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen', status: 'H'},
+  {position: 2, name: 'Helium', status: 'He'},
+  {position: 3, name: 'Lithium', status: 'Li'}
 ];
-
+*/
 
 
 
@@ -27,7 +25,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class SelfTestOnLaunchComponent {
 
-    displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
-  constructor(){};
+  displayedColumns: string[] = ['position', 'name', 'status'];
+  @Input() dataSource!:PeriodicElement[];
+  constructor(private launcherservice:LauncherService){
+
+    this.launcherservice.observeLauncherTest().subscribe(test=>{this.dataSource=test.selftest})
+  };
 }

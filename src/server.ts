@@ -118,7 +118,7 @@ class MotherBoard implements plugin,addon,devicedriver{
 
     app.get('/api/selftest:syntax', (req, res) => {
     // Handle API request
-      res.status(200).json({selftest:instance.selftest()});
+      res.status(200).json({selftest:[{position:1,name:"motherboard",status:instance.selftest()}]});
     });
 
   }
