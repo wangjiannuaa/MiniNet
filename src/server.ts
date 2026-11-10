@@ -37,7 +37,8 @@ interface addon extends selftestonlaunch{
   deregister():void;
 
 }
-interface device extends selftestonlaunch{
+interface devicedriver extends selftestonlaunch{
+  devicedrivername:string;
   precommand():void;
   timerstart():void;
   timerstop():void;
@@ -46,8 +47,9 @@ interface device extends selftestonlaunch{
 }
 
 
-class CuisineDevice implements device {
-  constructor(){}
+class CuisineDevice implements devicedriver {
+   declare devicedrivername:string;
+  constructor(name:string){this.devicedrivername=name;}
   selftest():string{return "pass";}
   precommand():void{}
   timerstart():void{}
@@ -56,8 +58,9 @@ class CuisineDevice implements device {
   postcommand():void{}
 
 }
-class ShoppingDevice implements device {
-    constructor(){}
+class ShoppingDevice implements devicedriver {
+   declare devicedrivername:string;
+  constructor(name:string){this.devicedrivername=name;}
   selftest():string{return "pass";}
   precommand():void{}
   timerstart():void{}
@@ -65,8 +68,9 @@ class ShoppingDevice implements device {
   command():void{}
   postcommand():void{}
 }
-class WordingDevice implements device {
-    constructor(){}
+class WordingDevice implements devicedriver {
+ declare devicedrivername:string;
+  constructor(name:string){this.devicedrivername=name;}
   selftest():string{return "pass";}
   precommand():void{}
   timerstart():void{}
@@ -89,10 +93,22 @@ interface Estimation extends tool{
 
 
 //reshuffling starting point
-class MotherBoard implements plugin,addon,device{
+class MotherBoard implements plugin,addon,devicedriver{
+ public brandname:string;
+  public typename:string;
+  declare devicedrivername:string;
 
-  constructor(){}
-  selftest():string{return "pass";}
+  constructor(brandname:string,typename:string,devicedrivername:string){
+    this.brandname=brandname;
+    this.typename=typename;
+    this.devicedrivername=devicedrivername;
+  }
+  selftest():string{
+
+
+
+
+    return "brandname:"+this.brandname+"typename:"+this.typename+this.devicedrivername+"devicedrivername"+"pass";}
   plugin():void{}
   plugout():void{}
   register():void{}
@@ -106,6 +122,7 @@ class MotherBoard implements plugin,addon,device{
 
 }
 
+const instance=new MotherBoard("prod","com","org");
 
 
 
@@ -165,7 +182,10 @@ app.get('/api/repl:syntax', (req, res) => {
 res.status(200).json({code:"2"});
 });
 
-
+app.get('/api/selftest:syntax', (req, res) => {
+    // Handle API request
+  res.status(200).json({selftest:instance.selftest()});
+});
 
 
 /**
