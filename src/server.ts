@@ -21,44 +21,88 @@ interface User {
     endup,
     tuneup,
     tunedown
-  }
-interface CuisinePlugin {
+ }
 
+interface selftestonlaunch {
+  selftest():string;
+}
 
+interface plugin extends selftestonlaunch{
+  plugin():void;
+  plugout():void;
+}
+//displayed as an variety of iconbutton
+interface addon extends selftestonlaunch{
+    register():void;
+  deregister():void;
+
+}
+interface device extends selftestonlaunch{
   precommand():void;
   timerstart():void;
   timerstop():void;
   command():void;
   postcommand():void;
 }
-interface ShoppingPlugin {}
-interface WordingPlugin{}
 
-//displayed as an variety of iconbutton
-interface addon {
-  register():void;
-  deregister():void;
+
+class CuisineDevice implements device {
+  constructor(){}
+  selftest():string{return "pass";}
+  precommand():void{}
+  timerstart():void{}
+  timerstop():void{}
+  command():void{}
+  postcommand():void{}
 
 }
-class Measurement {
+class ShoppingDevice implements device {
     constructor(){}
+  selftest():string{return "pass";}
+  precommand():void{}
+  timerstart():void{}
+  timerstop():void{}
+  command():void{}
+  postcommand():void{}
 }
-class Estimation {
+class WordingDevice implements device {
     constructor(){}
+  selftest():string{return "pass";}
+  precommand():void{}
+  timerstart():void{}
+  timerstop():void{}
+  command():void{}
+  postcommand():void{}
+
 }
+
+
+
+/*
+interface Measurement extends tool{
+
+}
+interface Estimation extends tool{
+
+}*/
+
+
 
 //reshuffling starting point
-class MotherBoard implements CuisinePlugin, ShoppingPlugin, WordingPlugin,addon{
+class MotherBoard implements plugin,addon,device{
 
   constructor(){}
-  precommand():void{};
-  timerstart():void{};
-  timerstop():void{};
-  command():void{};
-  postcommand():void{};
-  register():void{};
-  deregister():void{};
+  selftest():string{return "pass";}
+  plugin():void{}
+  plugout():void{}
+  register():void{}
+  deregister():void{}
 
+  precommand():void{}
+  timerstart():void{}
+  timerstop():void{}
+  command():void{}
+  postcommand():void{}
 
 }
 
