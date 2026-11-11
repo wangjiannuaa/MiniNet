@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule} from '@angular/material/menu';
+
 import { AppRoutingModule } from './app-routing.module';
 import { FacadeModule } from './facade/facade.module';
 import { StorieeComponent } from './storiee/storiee.component';
@@ -45,7 +47,8 @@ import { LayoutpagegroupComponent } from './layoutpagegroup/layoutpagegroup.comp
     MatIconModule,
     MatToolbarModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { Component,AfterViewInit,ElementRef,ViewChild } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+
 enum PAGEDIRCONTROL{
   UP,
   DOWN
@@ -26,6 +28,11 @@ export class LayoutdirectorComponent {
   }
   pagegroupdownwards(){
     this.grouppagenum--;
+  }
+
+  ngAfterViewInit():void{
+
+
   }
 
 }
