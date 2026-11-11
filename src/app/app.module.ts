@@ -8,7 +8,7 @@ import { MatButtonModule} from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule} from '@angular/material/menu';
-
+import { MatGridListModule} from '@angular/material/grid-list';
 import { AppRoutingModule } from './app-routing.module';
 import { FacadeModule } from './facade/facade.module';
 import { StorieeComponent } from './storiee/storiee.component';
@@ -48,7 +48,8 @@ import { LayoutpagegroupComponent } from './layoutpagegroup/layoutpagegroup.comp
     MatToolbarModule,
     MatTableModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatGridListModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
