@@ -1,9 +1,18 @@
 <mat-toolbar>
-  <button matIconButton class="navigate-icon" aria-label="up" (click)="pagegroupupwards()">
-    <mat-icon>NavigateUp</mat-icon>
+  <button matIconButton class="example-icon" aria-label="Example icon-button with menu icon" >
+    <mat-icon>menu</mat-icon>
   </button>
-  <button matIconButton class="navigate-icon" aria-label="down" (click)="pagegroupdownwards()">
-    <mat-icon>NavigateDown</mat-icon>
+  <span>Mini App</span>
+  <span class="example-spacer"></span>
+  <button matIconButton class="up-icon" aria-label="Example icon-button with up icon"
+ (click)="pagegroupupwards()"
+          >
+    <mat-icon>arrow_upward</mat-icon>
+  </button>
+  <button matIconButton class="down-icon" aria-label="Example icon-button with down icon"
+ (click)="pagegroupdownwards()"
+          >
+    <mat-icon>arrow_downward</mat-icon>
   </button>
 </mat-toolbar>
 <p>{{grouppagenum}}</p>
