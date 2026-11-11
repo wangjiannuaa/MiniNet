@@ -9,10 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './app.component.html'
 
 
-    
+
 })
 export class App {
     protected readonly title = signal('王太坊');
+    protected isLoggedin = false;
 
-    
 }

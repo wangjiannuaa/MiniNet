@@ -4,6 +4,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule} from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +18,9 @@ import { AICommandHistoryListComponent } from './facade/aicommand-history-list/a
 import { REPLComponent } from './facade/repl/repl.component';
 import { SelfTestOnLaunchComponent } from './self-test-on-launch/self-test-on-launch.component';
 import { MatTableModule } from '@angular/material/table';
+import { LayoutdirectorComponent } from './layoutdirector/layoutdirector.component';
+import { LayoutpageComponent } from './layoutpage/layoutpage.component';
+import { LayoutpagegroupComponent } from './layoutpagegroup/layoutpagegroup.component';
 @NgModule({
   declarations: [
     App,
@@ -27,6 +31,9 @@ import { MatTableModule } from '@angular/material/table';
     AICommandHistoryListComponent,
     REPLComponent,
     SelfTestOnLaunchComponent,
+    LayoutdirectorComponent,
+    LayoutpageComponent,
+    LayoutpagegroupComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +44,8 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule,
     MatIconModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
