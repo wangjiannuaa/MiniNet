@@ -1,6 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal,AfterViewInit,AfterViewChecked,ElementRef,ViewChild} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-
+import { Aspectofview } from './aspectofview.llm';
 
 @Component({
   selector: 'bw-root',
@@ -11,8 +11,20 @@ import { MatIconModule } from '@angular/material/icon';
 
 
 })
-export class App {
-    protected readonly title = signal('王太坊');
+export class App implements AfterViewInit,AfterViewChecked{
+    protected readonly title = signal('米尼网络');
     protected isLoggedin = false;
 
+    @ViewChild('pcAppouterdiv')outerdiv!:ElementRef<HTMLDivElement>;
+    
+    constructor(private aspectofview:Aspectofview){
+	
+    }
+
+    ngAfterViewInit(){
+	console.log("j");this.outerdiv.nativeElement.focus();
+    }
+    ngAfterViewChecked(){
+
+    }
 }

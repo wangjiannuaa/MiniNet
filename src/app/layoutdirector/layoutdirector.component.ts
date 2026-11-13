@@ -1,8 +1,7 @@
-import { Component,AfterViewInit,ElementRef,ViewChild } from '@angular/core';
+import { Component,AfterViewInit,ElementRef,ViewChild,ViewEncapsulation } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
 
 enum PAGEDIRCONTROL{
   UP,
@@ -12,7 +11,8 @@ enum PAGEDIRCONTROL{
   selector: 'bw-layoutdirector',
   standalone: false,
   styleUrl: './layoutdirector.component.scss',
-  templateUrl: './layoutdirector.component.html',
+    templateUrl: './layoutdirector.component.html',
+    encapsulation:ViewEncapsulation.Emulated,
 })
 
 

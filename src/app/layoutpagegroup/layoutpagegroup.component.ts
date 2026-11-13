@@ -17,8 +17,8 @@ export class LayoutpagegroupComponent {
   protected pagegroupnum:number=1;
 
   pagegroup: page[] = [
-    {text: 'One',  color: 'lightblue'},
-    {text: 'Two',  color: 'lightgreen'},
+    {text: 'One',  color: 'white'},
+    {text: 'Two',  color: 'white'},
   ];
 
 }

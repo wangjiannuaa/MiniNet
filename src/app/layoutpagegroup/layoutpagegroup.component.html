@@ -6,7 +6,8 @@
   <button mat-menu-item>Item 2</button>
     </mat-menu>
 </div>
-<mat-grid-list cols="1" rowHeight="100px" >
+<div class="grouppagebody">
+<mat-grid-list cols="1" rowHeight="600px" >
   @for (page of pagegroup; track page) {
     <mat-grid-tile
       [style.background]="page.color">
@@ -14,7 +15,7 @@
     </mat-grid-tile>
   }
 </mat-grid-list>
-
+</div>
 <div class="grouppagefooter">
   <bw-layoutdirector />
 </div>

@@ -1,15 +1,15 @@
 .grouppageheader{
-  background-color: blue;
-  align-items: left;
+    background-color: violet;
 
+    border:2px solid whitesmoke; 
 }
 .grouppagefooter{
-  align-items: right;
-  background-color: green;
-
+    background-color: green;
+    align-items: right;
 }
 .grouppage{
-  display: block;
-  width:  1300px;
-  height: 100%;
+    display: block;
+    width:  1290px;
+    height: 600px;
+    border-radius:999px;
 }
