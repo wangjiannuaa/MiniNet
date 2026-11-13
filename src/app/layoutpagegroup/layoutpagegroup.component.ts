@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import { MatMenuModule} from '@angular/material/menu';
-import {MatGridListModule} from '@angular/material/grid-list';
+
+import { MatGridListModule} from '@angular/material/grid-list';
+import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule} from '@angular/forms';
+
 export interface page {
   color: string;
   text: string;

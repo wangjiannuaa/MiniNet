@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-chief-executive-officer',
+  standalone: false,
+  styleUrl: './chief-executive-officer.component.scss',
+  templateUrl: './chief-executive-officer.component.html',
+})
+export class ChiefExecutiveOfficer {}

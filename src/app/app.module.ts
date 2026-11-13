@@ -4,11 +4,11 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule} from '@angular/material/menu';
-import { MatGridListModule} from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { AppRoutingModule } from './app-routing.module';
 import { FacadeModule } from './facade/facade.module';
 import { StorieeComponent } from './storiee/storiee.component';
@@ -23,6 +23,11 @@ import { MatTableModule } from '@angular/material/table';
 import { LayoutdirectorComponent } from './layoutdirector/layoutdirector.component';
 import { LayoutpageComponent } from './layoutpage/layoutpage.component';
 import { LayoutpagegroupComponent } from './layoutpagegroup/layoutpagegroup.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { ChiefExecutiveOfficerComponent } from './chief-executive-officer/chief-executive-officer.component';
+import { LayoutstartpointComponent } from './layoutstartpoint/layoutstartpoint.component';
+
 @NgModule({
   declarations: [
     App,
@@ -36,6 +41,8 @@ import { LayoutpagegroupComponent } from './layoutpagegroup/layoutpagegroup.comp
     LayoutdirectorComponent,
     LayoutpageComponent,
     LayoutpagegroupComponent,
+    ChiefExecutiveOfficerComponent,
+    LayoutstartpointComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,9 @@ import { LayoutpagegroupComponent } from './layoutpagegroup/layoutpagegroup.comp
     MatTableModule,
     MatButtonModule,
     MatMenuModule,
-    MatGridListModule
+    MatGridListModule,
+    MatPaginatorModule,
+    MatInputModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
