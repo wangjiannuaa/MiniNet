@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, viewChild} from '@angular/core';
+
 
 @Component({
   selector: 'bw-layoutpage',
