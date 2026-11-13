@@ -1,18 +1,17 @@
-<mat-toolbar class="toolbar">
-  <button matIconButton class="example-icon" aria-label="Example icon-button with menu icon" >
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Mini App</span>
-  <span class="spacer"></span>
-  <button matIconButton class="up-icon" aria-label="Example icon-button with up icon"
- (click)="pagegroupupwards()"
-          >
-    <mat-icon>arrow_upward</mat-icon>
-  </button>
-  <button matIconButton class="down-icon" aria-label="Example icon-button with down icon"
- (click)="pagegroupdownwards()"
-          >
-    <mat-icon>arrow_downward</mat-icon>
-  </button>
-</mat-toolbar>
-<p>{{grouppagenum}}</p>
+<mat-paginator #paginator
+               class="demo-paginator"
+               (page)="handlePageEvent($event)"
+               [length]="length()"
+               [pageSize]="pageSize()"
+               [disabled]="disabled()"
+               [showFirstLastButtons]="showFirstLastButtons()"
+               [pageSizeOptions]="showPageSizeOptions() ? pageSizeOptions() : []"
+               [hidePageSize]="hidePageSize()"
+               [pageIndex]="pageIndex()"
+               aria-label="Select page">
+</mat-paginator>
+
+<div class="demo-data">
+  <div> Output event: {{(pageEvent() | json) || 'No events dispatched yet'}} </div>
+  <div> getNumberOfPages: {{paginator.getNumberOfPages()}} </div>
+</div>
