@@ -16,7 +16,7 @@ interface User {
   name: string;
   email: string;
 }
- const enum cuisinecommand {
+ const enum artingcommand {
     startup,
     endup,
     tuneup,

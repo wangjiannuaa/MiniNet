@@ -27,6 +27,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { ChiefExecutiveOfficerComponent } from './chief-executive-officer/chief-executive-officer.component';
 import { LayoutstartpointComponent } from './layoutstartpoint/layoutstartpoint.component';
+import { MXwidgetComponent } from './mxwidget/mxwidget.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { LayoutstartpointComponent } from './layoutstartpoint/layoutstartpoint.c
     LayoutpagegroupComponent,
     ChiefExecutiveOfficerComponent,
     LayoutstartpointComponent,
+    MXwidgetComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,6 @@
-<p>layoutpage works!{{page}}</p>
+ @for (mxwidget of mxwidgetgroup; track mxwidget) {
+    <bw-mxwidget [style.background]="mxwidget.color">
+	<p>{{mxwidget.text}}</p>
+  
+      </bw-mxwidget>
+  }
