@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ElementRef,ContentChild,AfterContentInit} from '@angular/core';
 
 @Component({
   selector: 'bw-mxwidget',
@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './mxwidget.component.scss',
   templateUrl: './mxwidget.component.html',
 })
-export class MXwidgetComponent {}
+export class MXwidgetComponent {
+    @ContentChild('projection')projectionRef!:ElementRef;
+    
+    ngAfterContentInit(){
+	console.log(this.projectionRef);
+    }
+
+}

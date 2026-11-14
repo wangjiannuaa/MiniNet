@@ -1,6 +1,8 @@
  @for (mxwidget of mxwidgetgroup; track mxwidget) {
-    <bw-mxwidget [style.background]="mxwidget.color">
-	<p>{{mxwidget.text}}</p>
-  
-      </bw-mxwidget>
+     <bw-mxwidget [style.background-color]="mxwidget.color">
+
+       <input type="search" #projection value={{mxwidget.text}} >
+       <button (click)="widgethandler()" >handler </button>
+    </bw-mxwidget>
+
   }

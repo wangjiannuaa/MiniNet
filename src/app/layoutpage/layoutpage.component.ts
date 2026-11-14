@@ -18,10 +18,12 @@ export interface widget
 export class LayoutpageComponent {
     protected page:number =1;
     mxwidgetgroup: widget[] = [
-    {text: 'One',  color: 'white'},
-    {text: 'Two',  color: 'white'},
+    {text: 'One',  color: 'green'},
+    {text: 'Two',  color: 'blue'},
   ];
 
 	constructor(){}
-
+    widgethandler(){
+	console.log("in page");
+    }
 }
