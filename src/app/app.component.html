@@ -2,8 +2,8 @@
   @if (!isLoggedin){
 
  <bw-chief-executive-officer/>
- <div #pcAppouterdiv >
-  <bw-layoutpagegroup />
+ <div>
+  <bw-layoutpagegroup #pcchild [pagegroupnum]="pagegroupnumout"/>
  </div>
  
   }

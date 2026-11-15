@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 
 import { MatGridListModule} from '@angular/material/grid-list';
 import { MatPaginatorModule} from '@angular/material/paginator';
@@ -20,7 +20,7 @@ export interface page {
   templateUrl: './layoutpagegroup.component.html',
 })
 export class LayoutpagegroupComponent {
-  protected pagegroupnum:number=1;
+    @Input() pagegroupnum:number=1;
 
   pagegroup: page[] = [
     {text: 'One',  color: 'white'},
