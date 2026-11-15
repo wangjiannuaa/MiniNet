@@ -10,7 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatBadgeModule } from '@angular/material/badge';
-import { MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { FacadeModule } from './facade/facade.module';
 import { StorieeComponent } from './storiee/storiee.component';
@@ -35,6 +35,9 @@ import { NetComponent } from './net/net.component';
 import { CartComponent } from './cart/cart.component';
 import { GenomComponent } from './genom/genom.component';
 import { NeuronComponent } from './neuron/neuron.component';
+import { OrderComponent } from './order/order.component';
+import { TicketComponent } from './ticket/ticket.component';
+import { LedgerComponent } from './ledger/ledger.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,9 @@ import { NeuronComponent } from './neuron/neuron.component';
     CartComponent,
     GenomComponent,
     NeuronComponent,
+    OrderComponent,
+    TicketComponent,
+    LedgerComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,8 +79,8 @@ import { NeuronComponent } from './neuron/neuron.component';
     MatGridListModule,
     MatPaginatorModule,
     MatInputModule,
-      MatBadgeModule,
-      MatProgressBarModule,
+    MatBadgeModule,
+    MatProgressBarModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

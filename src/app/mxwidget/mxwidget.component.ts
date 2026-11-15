@@ -5,6 +5,9 @@ export enum EABI{
     base ="base",
     net  ="net",
     cart ="cart",
+    order ="order",
+    ledger = "ledger",
+    ticket = "ticket",
 }
 
 @Component({

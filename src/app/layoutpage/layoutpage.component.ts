@@ -1,7 +1,7 @@
 import {Component, viewChild} from '@angular/core';
 import {MXwidgetComponent } from '../mxwidget/mxwidget.component';
 
-export interface widget
+export interface message
 {
     color:string;
     text:string;
@@ -17,7 +17,7 @@ export interface widget
 })
 export class LayoutpageComponent {
     protected page:number =1;
-    mxwidgetgroup: widget[] = [
+    messagegroup: message[] = [
     {text: 'One',  color: 'green'},
     {text: 'Two',  color: 'blue'},
   ];

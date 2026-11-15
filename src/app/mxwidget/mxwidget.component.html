@@ -1,24 +1,29 @@
-<div class="mxwidget">
 
-  @if(essentialabi == "base"){
+  @switch (essentialabi) {
+  
+  @case ("base") {
   <bw-base>
      </bw-base>
   }
-  @else if(essentialabi == "net"){
+  @case ("net") {
     <bw-net>
      </bw-net>
-	}
-    @else if(essentialabi == "cart"){
+}
+    @case ("cart") {
       <bw-cart>
       </bw-cart>
-  }
-        @else if(essentialabi == "genom"){
+      }
+      @case ("genom") {
       <bw-genom>
-	</bw-genom>}
-	@else if( essentialabi == "neuron"){
-      <bw-neuron>
+	</bw-genom>
+      }
+      @case ("neuron") {
+     <bw-neuron>
 	</bw-neuron>
-  }
-    <ng-content>
+      }
+  @default
+     {
+         <ng-content>
    </ng-content>
-</div>
+}
+}

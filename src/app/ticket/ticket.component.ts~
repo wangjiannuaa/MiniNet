@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-ticket',
+  standalone: false,
+  styleUrl: './ticket.component.scss',
+  templateUrl: './ticket.component.html',
+})
+export class Ticket {}

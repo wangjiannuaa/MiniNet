@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-order',
+  standalone: false,
+  styleUrl: './order.component.scss',
+  templateUrl: './order.component.html',
+})
+export class Order {}

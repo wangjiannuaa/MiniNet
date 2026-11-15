@@ -22,7 +22,7 @@ export class App implements AfterViewInit,AfterViewChecked{
     }
 
     ngAfterViewInit(){
-	console.log("j");this.outerdiv.nativeElement.focus();
+	this.outerdiv.nativeElement.focus();
     }
     ngAfterViewChecked(){
 
