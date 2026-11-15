@@ -9,6 +9,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { FacadeModule } from './facade/facade.module';
 import { StorieeComponent } from './storiee/storiee.component';
@@ -28,6 +30,11 @@ import { MatInputModule } from '@angular/material/input';
 import { ChiefExecutiveOfficerComponent } from './chief-executive-officer/chief-executive-officer.component';
 import { LayoutstartpointComponent } from './layoutstartpoint/layoutstartpoint.component';
 import { MXwidgetComponent } from './mxwidget/mxwidget.component';
+import { BaseComponent } from './base/base.component';
+import { NetComponent } from './net/net.component';
+import { CartComponent } from './cart/cart.component';
+import { GenomComponent } from './genom/genom.component';
+import { NeuronComponent } from './neuron/neuron.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +52,11 @@ import { MXwidgetComponent } from './mxwidget/mxwidget.component';
     ChiefExecutiveOfficerComponent,
     LayoutstartpointComponent,
     MXwidgetComponent,
+    BaseComponent,
+    NetComponent,
+    CartComponent,
+    GenomComponent,
+    NeuronComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +73,8 @@ import { MXwidgetComponent } from './mxwidget/mxwidget.component';
     MatGridListModule,
     MatPaginatorModule,
     MatInputModule,
+      MatBadgeModule,
+      MatProgressBarModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

@@ -1,5 +1,24 @@
 <div class="mxwidget">
-<p>mxwidget works!</p>
+
+  @if(essentialabi == "base"){
+  <bw-base>
+     </bw-base>
+  }
+  @else if(essentialabi == "net"){
+    <bw-net>
+     </bw-net>
+	}
+    @else if(essentialabi == "cart"){
+      <bw-cart>
+      </bw-cart>
+  }
+        @else if(essentialabi == "genom"){
+      <bw-genom>
+	</bw-genom>}
+	@else if( essentialabi == "neuron"){
+      <bw-neuron>
+	</bw-neuron>
+  }
     <ng-content>
    </ng-content>
 </div>

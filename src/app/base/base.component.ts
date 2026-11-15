@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-base',
+  standalone: false,
+  styleUrl: './base.component.scss',
+  templateUrl: './base.component.html',
+})
+export class BaseComponent {}

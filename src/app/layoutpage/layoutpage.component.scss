@@ -10,3 +10,27 @@
 .example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
   margin-left: 8px;
 }
+.some-section {
+  display: flex;
+  align-items: center;
+}
+
+.some-label {
+  font-size: 14px;
+  margin: 0 16px 0 8px;
+  min-width: 120px;
+}
+
+.some-button-row {
+  max-width: 600px;
+}
+
+.some-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.some-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
