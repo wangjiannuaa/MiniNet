@@ -1,10 +1,10 @@
-import {Component, viewChild} from '@angular/core';
+import {Component, Input,viewChild} from '@angular/core';
 import {MXwidgetComponent } from '../mxwidget/mxwidget.component';
 
-export interface message
+export interface Message
 {
-    color:string;
-    text:string;
+
+    
 }
 
 
@@ -16,11 +16,9 @@ export interface message
   templateUrl: './layoutpage.component.html',
 })
 export class LayoutpageComponent {
-    protected page:number =1;
-    messagegroup: message[] = [
-    {text: 'One',  color: 'green'},
-    {text: 'Two',  color: 'blue'},
-  ];
+    @Input() pagenum!:number;
+    @Input() pagesize!:number;
+    @Input() layoutpage!: Message[];
 
 	constructor(){}
     widgethandler(){

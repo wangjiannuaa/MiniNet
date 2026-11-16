@@ -1,15 +1,14 @@
-
-  @switch (essentialabi) {
+@switch (essentialabi) {
   
-  @case ("base") {
+      @case ("base") {
   <bw-base>
      </bw-base>
   }
-  @case ("net") {
+      @case ("net") {
     <bw-net>
      </bw-net>
 }
-    @case ("cart") {
+      @case ("cart") {
       <bw-cart>
       </bw-cart>
       }
@@ -21,9 +20,9 @@
      <bw-neuron>
 	</bw-neuron>
       }
-  @default
+      @default
      {
-         <ng-content>
-   </ng-content>
-}
+      <ng-content>
+      </ng-content>
+     }
 }

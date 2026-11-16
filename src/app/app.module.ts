@@ -38,6 +38,7 @@ import { NeuronComponent } from './neuron/neuron.component';
 import { OrderComponent } from './order/order.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { LedgerComponent } from './ledger/ledger.component';
+import { LayoutpagecubeComponent } from './layoutpagecube/layoutpagecube.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { LedgerComponent } from './ledger/ledger.component';
     OrderComponent,
     TicketComponent,
     LedgerComponent,
+    LayoutpagecubeComponent,
   ],
   imports: [
     BrowserModule,

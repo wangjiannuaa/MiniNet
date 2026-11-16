@@ -4,3 +4,4 @@ copy-to-register
 insert-register
 or append-to-register
 increment-register
+ctrl-x ctrl-+ 放大emacs字体

@@ -1,9 +1,20 @@
-<main class="main" >
+<main class="main" (keydown.enter)="bubble($event)">
   @if (!isLoggedin){
 
  <bw-chief-executive-officer/>
  <div>
-  <bw-layoutpagegroup #pcchild [pagegroupnum]="pagegroupnumout"/>
+
+    <div [class]= "debut ? 'debutgrouppageheader' : 'grouppageheader'">
+      <bw-layoutstartpoint #pcchild1 >
+	<div [class]="debut ? 'debutgrouppage' : 'grouppage'">
+	    <bw-layoutpagecube #pcchild2  >
+	    </bw-layoutpagecube>
+
+	</div>    
+      </bw-layoutstartpoint>
+    </div>
+   
+
  </div>
  
   }

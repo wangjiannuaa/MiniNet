@@ -1,5 +1,4 @@
 import { Component,Input } from '@angular/core';
-
 import { MatGridListModule} from '@angular/material/grid-list';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatInputModule} from '@angular/material/input';
@@ -7,9 +6,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule} from '@angular/forms';
 import { LayoutpageComponent } from '../layoutpage/layoutpage.component';
 
-export interface page {
-  color: string;
-  text: string;
+export interface Page {
 }
 
 //sliding window refresh
@@ -20,11 +17,9 @@ export interface page {
   templateUrl: './layoutpagegroup.component.html',
 })
 export class LayoutpagegroupComponent {
-    @Input() pagegroupnum:number=1;
+    @Input() pagegroupnum!:number;
+    @Input() pagegroupsize!:number;
 
-  pagegroup: page[] = [
-    {text: 'One',  color: 'white'},
-    {text: 'Two',  color: 'white'},
-  ];
+  @Input() layoutpagegroup!: Page[];
 
 }

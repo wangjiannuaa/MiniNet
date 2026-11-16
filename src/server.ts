@@ -11,6 +11,12 @@ import { MongoClient, ObjectId, WithId, Filter, UpdateFilter } from 'mongodb';
 //1data piper
 //2command loader
 
+	const app = express();
+const angularApp = new AngularNodeAppEngine();
+
+const browserDistFolder = join(import.meta.dirname, '../browser');
+
+
 interface User {
   _id?: ObjectId; // optional when inserting
   name: string;
@@ -114,75 +120,9 @@ class MotherBoard implements plugin,addon,devicedriver{
   register():void{}
   deregister():void{}
 
-  precommand():void{
-
-    app.get('/api/selftest:syntax', (req, res) => {
-    // Handle API request
-      res.status(200).json({selftest:[{position:1,name:"motherboard",status:instance.selftest()}]});
-    });
-
-  }
-  timerstart():void{}
-  timerstop():void{}
-  command():void{}
-  postcommand():void{}
-
-}
+    precommand():void{
 
 
-
-
-
-
-
-
-async function demo() {
-  const uri = process.env['MONGO_URI'] || 'mongodb://localhost:27017';
-  const client = new MongoClient(uri);
-  await client.connect();
-
-  const db = client.db('mydb');
-  const users = db.collection<User>('users'); // collection typed as User
-
-  // Insert
-  const insertResult = await users.insertOne({ name: 'Alice', email: 'alice@example.com' });
-  const newId: ObjectId = insertResult.insertedId;
-
-  // Find one (result type is WithId<User> | null)
-  const user = await users.findOne({ _id: newId } as Filter<User>) as WithId<User> | null;
-
-  // Find many -> WithId<User>[]
-  const all = await users.find({}).toArray();
-
-  // Update (typed UpdateFilter)
-  const updateRes = await users.updateOne(
-    { _id: newId } as Filter<User>,
-    { $set: { email: 'alice@new.com' } } as UpdateFilter<User>,
-  );
-
-  await client.close();
-}
-
-
-
-
-
-const browserDistFolder = join(import.meta.dirname, '../browser');
-
-const app = express();
-const angularApp = new AngularNodeAppEngine();
-
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
 app.get('/api/repl:syntax', (req, res) => {
     // Handle API request
 res.status(200).json({code:"2"});
@@ -214,26 +154,96 @@ app.use((req, res, next) => {
     .catch(next);
 });
 
-const instance=new MotherBoard("prod","com","org");
-instance.precommand();
+    app.get('/api/selftest:syntax', (req, res) => {
+    // Handle API request
+      res.status(200).json({selftest:[{position:1,name:"motherboard",status:instance.selftest()}]});
+    });
+    app.get('/api/manager:messagehistory', (req, res) => {
+    // Handle API request
+	res.status(200).json({messagehistory:[{position:1,name:"w",phase:"genom",status:"dev"},
+					      {position:2,name:"e",phase:"cart",status:"2020"}]});
+    });
+      
+
+	/**
+	 * Start the server if this module is the main entry point, or it is ran via PM2.
+	 * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
+	 */
+	if (isMainModule(import.meta.url) || process.env['pm_id']) {
+	    const port = process.env['PORT'] || 4000;
+	    app.listen(port, (error) => {
+		if (error) {
+		    throw error;
+		}
+
+		console.log(`Node Express server listening on http://localhost:${port}`);
+	    });
+}
+
+  }
+  timerstart():void{}
+  timerstop():void{}
+  command():void{}
+  postcommand():void{}
+
+}
+
+
+
+
+
+
+
+
+async function mdbdemo() {
+  const uri = process.env['MONGO_URI'] || 'mongodb://localhost:27017';
+  const client = new MongoClient(uri);
+  await client.connect();
+
+  const db = client.db('mydb');
+  const users = db.collection<User>('users'); // collection typed as User
+
+  // Insert
+  const insertResult = await users.insertOne({ name: 'Alice', email: 'alice@example.com' });
+  const newId: ObjectId = insertResult.insertedId;
+
+  // Find one (result type is WithId<User> | null)
+  const user = await users.findOne({ _id: newId } as Filter<User>) as WithId<User> | null;
+
+  // Find many -> WithId<User>[]
+  const all = await users.find({}).toArray();
+
+  // Update (typed UpdateFilter)
+  const updateRes = await users.updateOne(
+    { _id: newId } as Filter<User>,
+    { $set: { email: 'alice@new.com' } } as UpdateFilter<User>,
+  );
+
+  await client.close();
+}
+
+
 
 
 
 
 /**
- * Start the server if this module is the main entry point, or it is ran via PM2.
- * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
+ * Example Express Rest API endpoints can be defined here.
+ * Uncomment and define endpoints as necessary.
+ *
+ * Example:
+ * ```ts
+ * app.get('/api/{*splat}', (req, res) => {
+ *   // Handle API request
+ * });
+ * ```
  */
-if (isMainModule(import.meta.url) || process.env['pm_id']) {
-  const port = process.env['PORT'] || 4000;
-  app.listen(port, (error) => {
-    if (error) {
-      throw error;
-    }
 
-    console.log(`Node Express server listening on http://localhost:${port}`);
-  });
-}
+const instance=new MotherBoard("prod","com","org");
+instance.precommand();
+
+
+
 
 /**
  * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.

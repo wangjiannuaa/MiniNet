@@ -1,15 +1,8 @@
-<div class="grouppage">
-  <div class="grouppageheader">
-    <bw-layoutstartpoint>
-    </bw-layoutstartpoint>
-
-</div>
 <div class="grouppagebody">
 <mat-grid-list cols="1" rowHeight="600px" >
-  @for (page of pagegroup; track page) {
-    <mat-grid-tile
-      [style.background]="page.color">
-      <bw-layoutpage >
+  @for (page of layoutpagegroup; track page) {
+    <mat-grid-tile>
+      <bw-layoutpage [layoutpage]=page>
       </bw-layoutpage >
     </mat-grid-tile >
   }
@@ -19,4 +12,4 @@
   <bw-layoutdirector>
   </bw-layoutdirector>
 </div>
-</div>
+

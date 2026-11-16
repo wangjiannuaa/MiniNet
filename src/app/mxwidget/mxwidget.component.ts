@@ -22,7 +22,7 @@ export class MXwidgetComponent {
     constructor(){}
     
     ngAfterContentInit(){
-	console.log(this.projectionRef);//widget self-control自控
+	//console.log(this.projectionRef);//widget self-control自控
     }
 
 }

@@ -1,10 +1,9 @@
 <mat-grid-list cols="1" rowHeight="50px" >
-  @for (message of messagegroup; track message) {
-  <mat-grid-tile [style.background]="message.color">
+  @for (message of layoutpage; track message) {
+  <mat-grid-tile>
      <bw-mxwidget >
-
-       <div class="example-label" #projection >Floating Action Button (FAB)
-       </div>
+       <p>{{message}} </p>
+       <div class="example-label" #projection >Floating Action Button (FAB)</div>
        <div class="example-button-row">
 	 <div class="example-flex-container">
 	   <button matFab aria-label="Example icon button with a delete icon">
@@ -16,7 +15,8 @@
 	 </div>
        </div>
     </bw-mxwidget>
-  </mat-grid-tile >
+  </mat-grid-tile>
   }
+  <p>{{pagenum}} </p>
 </mat-grid-list>
 
