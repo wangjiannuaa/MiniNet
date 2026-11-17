@@ -12,9 +12,10 @@ width:var(--genomwidth)}`],
   templateUrl: './genom.component.html',
 })
 export class GenomComponent {
+   @Input() message!:any;
     genomheight:number=50;
 	genomwidth:number=1100;
-    @Input() message!:any;
+ 
     get genomht(){return this.genomheight.toString()+"px"; }
     get genomwh(){return this.genomwidth.toString()+"px";}
 }

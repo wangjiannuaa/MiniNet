@@ -17,5 +17,5 @@ import { LayoutpageComponent } from '../layoutpage/layoutpage.component';
 export class LayoutpagegroupComponent {
  
     @Input() layoutpagegroup!:any;
-
+    
 }
