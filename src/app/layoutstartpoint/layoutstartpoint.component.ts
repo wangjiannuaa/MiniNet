@@ -30,7 +30,8 @@ export class LayoutstartpointComponent implements OnInit {
 	let messagehistorysize=200;
 
 	this.pagecubecomponentref=this.containerref.createComponent(LayoutpagecubeComponent);
-	this.pagecubecomponentref.setInput('layoutpagecube','[[[[message:1],[message:2]][[message:3],[message:4]]],[[[message:5],[message:6]],[[message:7],[message:8]]]]');
+	this.pagecubecomponentref.setInput('layoutpagecube',[[[{message:1},{message:2}],
+[{message:3},{message:4}]],[[{message:5},{message:6}],[{message:7},{message:8}]]]);
 	
 	
     }

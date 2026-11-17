@@ -15,8 +15,7 @@ import { LayoutpageComponent } from '../layoutpage/layoutpage.component';
   templateUrl: './layoutpagegroup.component.html',
 })
 export class LayoutpagegroupComponent {
-    @Input() pagegroupnum!:number;
-    @Input() pagegroupsize!:number;
+ 
     @Input() layoutpagegroup!:any;
 
 }

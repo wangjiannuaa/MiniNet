@@ -8,5 +8,5 @@ import { Component,Input } from '@angular/core';
   templateUrl: './genom.component.html',
 })
 export class GenomComponent {
-    @Input() message!:string;
+    @Input() message!:any;
 }

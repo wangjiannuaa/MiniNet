@@ -9,8 +9,6 @@ import {MXwidgetComponent } from '../mxwidget/mxwidget.component';
   templateUrl: './layoutpage.component.html',
 })
 export class LayoutpageComponent {
-    @Input() pagenum!:number;
-    @Input() pagesize!:number;
     @Input() layoutpage!:any;
 
 	constructor(){}
