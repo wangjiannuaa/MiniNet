@@ -1,4 +1,4 @@
-import { Component,ElementRef,ContentChild,AfterContentInit} from '@angular/core';
+import { Component,Input,ElementRef,ContentChild,AfterContentInit} from '@angular/core';
 export enum EABI{
     genom="genom",
     neuro="neuron",
@@ -19,6 +19,7 @@ export enum EABI{
 export class MXwidgetComponent {
     @ContentChild('projection')projectionRef!:ElementRef;
     essentialabi:EABI=EABI.genom;
+    @Input() message!:string;
     constructor(){}
     
     ngAfterContentInit(){

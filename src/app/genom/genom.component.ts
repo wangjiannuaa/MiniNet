@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 
 @Component({
   selector: 'bw-genom',
-  standalone: false,
+    standalone: false,
+    
   styleUrl: './genom.component.scss',
   templateUrl: './genom.component.html',
 })
-export class GenomComponent {}
+export class GenomComponent {
+    @Input() message!:string;
+}

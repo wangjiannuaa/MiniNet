@@ -1,22 +1,10 @@
-<mat-grid-list cols="1" rowHeight="50px" >
+<div class="layoutpage">
   @for (message of layoutpage; track message) {
-  <mat-grid-tile>
-     <bw-mxwidget >
-       <p>{{message}} </p>
-       <div class="example-label" #projection >Floating Action Button (FAB)</div>
-       <div class="example-button-row">
-	 <div class="example-flex-container">
-	   <button matFab aria-label="Example icon button with a delete icon">
-             <mat-icon>delete</mat-icon>
-	   </button>
-	   <button matFab disabled aria-label="Example icon button with a heart icon" (click)="widgethandler()">
-             <mat-icon>favorite</mat-icon>
-	   </button>
-	 </div>
-       </div>
+  <div>
+    <bw-mxwidget [message]=message>
+      <a href="/"> back </a>
     </bw-mxwidget>
-  </mat-grid-tile>
+  </div>
   }
-  <p>{{pagenum}} </p>
-</mat-grid-list>
+</div>
 

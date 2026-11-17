@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'bw-layoutpagecube',
+  standalone: false,
+  styleUrl: './layoutpagecube.component.scss',
+  templateUrl: './layoutpagecube.component.html',
+})
+export class LayoutpagecubeComponent {}

@@ -1,14 +1,14 @@
-<div class="grouppagebody">
-<mat-grid-list cols="1" rowHeight="600px" >
+<div class="layoutpagegroup">
+<div>
   @for (page of layoutpagegroup; track page) {
-    <mat-grid-tile>
+    <div>
       <bw-layoutpage [layoutpage]=page>
       </bw-layoutpage >
-    </mat-grid-tile >
+    </div>
   }
-</mat-grid-list>
 </div>
-<div class="grouppagefooter">
+</div>
+<div class="layoutdirector">
   <bw-layoutdirector>
   </bw-layoutdirector>
 </div>

@@ -6,8 +6,6 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule} from '@angular/forms';
 import { LayoutpageComponent } from '../layoutpage/layoutpage.component';
 
-export interface Page {
-}
 
 //sliding window refresh
 @Component({
@@ -19,7 +17,6 @@ export interface Page {
 export class LayoutpagegroupComponent {
     @Input() pagegroupnum!:number;
     @Input() pagegroupsize!:number;
-
-  @Input() layoutpagegroup!: Page[];
+    @Input() layoutpagegroup!:any;
 
 }

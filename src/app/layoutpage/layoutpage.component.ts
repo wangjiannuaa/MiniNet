@@ -1,13 +1,6 @@
 import {Component, Input,viewChild} from '@angular/core';
 import {MXwidgetComponent } from '../mxwidget/mxwidget.component';
 
-export interface Message
-{
-
-    
-}
-
-
 
 @Component({ 
   selector: 'bw-layoutpage',
@@ -18,7 +11,7 @@ export interface Message
 export class LayoutpageComponent {
     @Input() pagenum!:number;
     @Input() pagesize!:number;
-    @Input() layoutpage!: Message[];
+    @Input() layoutpage!:any;
 
 	constructor(){}
     widgethandler(){

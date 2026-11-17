@@ -1,10 +1,9 @@
-import { Component,OnInit,ContentChild,AfterContentInit } from '@angular/core';
+import { Component,OnInit,ViewChild,ViewContainerRef,ComponentRef,AfterContentInit } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { LayoutpageComponent } from '../layoutpage/layoutpage.component';
-import { LayoutpagecubeComponent } from './layoutpagecube/layoutpagecube.component';
+import { LayoutpagecubeComponent } from '../layoutpagecube/layoutpagecube.component';
 
 @Component({
   selector: 'bw-layoutstartpoint',
@@ -14,24 +13,24 @@ import { LayoutpagecubeComponent } from './layoutpagecube/layoutpagecube.compone
 })
 
 export class LayoutstartpointComponent implements OnInit {
-    messagehistory:any[]=[];
-    messagesearchresult:any[]=[];
-    @ContentChild('pcchild2') pagecubecomponent!:LayoutpagecubeComponent;
+    messagehistory!:any;
+    messagesearchresult!:any;
+    @ViewChild('pcchild2',{read: ViewContainerRef}) containerref!: ViewContainerRef;
+    pagecubecomponentref!:ComponentRef<LayoutpagecubeComponent>;
     
     ngOnInit() {
-
 	this.http.get<any>(`/api/manager:messagehistory`).subscribe((res)=> {this.messagehistory=res.messagehistory;});
-	
     }
     constructor(private http:HttpClient){}
     ngAfterContentInit(){
-	console.log(this.pagecubecomponent);
     }
     showmessage(event: Event):void{
 	let intstructiontext= (event.target as HTMLInputElement).value;
 
 	let messagehistorysize=200;
-	
+
+	this.pagecubecomponentref=this.containerref.createComponent(LayoutpagecubeComponent);
+	this.pagecubecomponentref.setInput('layoutpagecube','[[[[message:1],[message:2]][[message:3],[message:4]]],[[[message:5],[message:6]],[[message:7],[message:8]]]]');
 	
 	
     }
