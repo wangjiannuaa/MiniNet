@@ -64,7 +64,7 @@ export class LayoutdirectorComponent {
     pagerize(messagelist:any):any{
 
         let pagecapacity:number=this.pageSize();
-	let pagegroupquote:number=2;
+	let pagegroupquote:number=this.aview.LAYOUTPAGEGROUPQUOTE;
 	
 	let page:any=[];//cab
 	let data:any=[];//aim building

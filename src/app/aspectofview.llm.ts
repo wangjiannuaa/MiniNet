@@ -9,8 +9,20 @@ import { Service } from '@angular/core';
 export class Aspectofview {
     private _layoutpageheight:number=600;
     private _layoutpagewidth:number=1300;
-    private _layoutpagecapacity:number=5; 
+    private _layoutpagecapacity:number=5;
+    private _layoutpagegroupquote:number=2;
     constructor(){}
+    public get LAYOUTPAGEGROUPQUOTE() {
+    return this._layoutpagegroupquote;
+    }
+        public set LAYOUTPAGEGROUPQUOTE(theLAYOUTPAGEGROUPQUOTE: number) {
+	if (theLAYOUTPAGEGROUPQUOTE <= 0 || theLAYOUTPAGEGROUPQUOTE >= 4) {
+	    throw new Error('The LAYOUTPAGEGROUPQUOTE is invalid');
+	}
+	this._layoutpagegroupquote = theLAYOUTPAGEGROUPQUOTE;
+	}
+
+    
     public get LAYOUTPAGEWIDTH() {
     return this._layoutpagewidth;
     }
