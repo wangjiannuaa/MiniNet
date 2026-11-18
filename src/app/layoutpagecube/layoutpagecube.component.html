@@ -1,13 +1,14 @@
-<div class="layoutpagecube">
-  @for (pagegroup of layoutpagecube; track pagegroup) {
+<div class="layoutpagecube" #pcChild3>
+
     <div>
-	       <bw-layoutpagegroup [layoutpagegroup]= pagegroup > 
+	       <bw-layoutpagegroup [layoutpagegroup]= layoutpagecube[0] > 
 	       </bw-layoutpagegroup >
     </div >
-  }
+
 </div>
 <div class="layoutdirector">
-  <bw-layoutdirector>
+  <bw-layoutdirector [layoutpagecube]=layoutpagecube>
   </bw-layoutdirector>
 </div>
+
 
