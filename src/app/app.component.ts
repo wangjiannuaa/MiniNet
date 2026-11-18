@@ -20,9 +20,6 @@ export class App implements AfterViewInit,AfterViewChecked{
     debut:boolean=true;
     
     @ViewChild('pcchild1')layoutpage!:LayoutpageComponent;
-    @ViewChild('pcchild2')layoutpagegroup!:LayoutpagegroupComponent;
-
-    
     constructor(private aspectofview:Aspectofview){
 	
     }

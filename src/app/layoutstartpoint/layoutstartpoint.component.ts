@@ -1,43 +1,9 @@
-import { Component,signal,computed,inject,Service,OnInit,ViewChild,ViewContainerRef,ComponentRef,AfterContentInit} from '@angular/core';
+import { Component,OnInit,ViewChild,ViewContainerRef,ComponentRef,AfterContentInit} from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { LayoutpagecubeComponent } from '../layoutpagecube/layoutpagecube.component';
-@Service()
-export class MessageProcessor {
-    
-    
-    pagerize(messagelist:any):any{
-
-        let pagecapacity:number=10;
-	let pagegroupquote:number=2;
-	
-	let page:any=[];//cab
-	let data:any=[];//aim building
-	let pagegroup:any=[];//train
-
-	(messagelist as []).forEach(function(item:{},index:number){
-       
-	
-
-	    let wherepage:number = index%(pagecapacity);//0--pagecapacity
-	    let whatpage:number = Math.floor(index/pagecapacity);
-		    whatpage = whatpage%pagegroupquote;//0--pagegroupquote
-	    let whatgroup:number = Math.floor(index/pagecapacity);
-	    whatgroup = Math.floor(whatgroup/pagegroupquote);
-		
-		page.splice(wherepage,0,item);
-
-	    if((wherepage == (pagecapacity-1) && page.length == pagecapacity) || (index+1) == messagelist.length )//full or null
-		{pagegroup.splice(whatpage,0,page);page=[];}
-	    if((whatpage == (pagegroupquote-1) && pagegroup.length == pagegroupquote) || (index+1) == messagelist.length )
-		{data.splice(whatgroup,0,pagegroup);pagegroup=[];}
-	
-	    });
-		    console.log("dt",data); return data;
-    }
-}
 
 @Component({
   selector: 'bw-layoutstartpoint',
@@ -47,7 +13,7 @@ export class MessageProcessor {
 })
 
 export class LayoutstartpointComponent implements OnInit {
-    messagepro=inject(MessageProcessor);
+ 
     messagehistory!:any;
     messagesearchresult!:any;
     @ViewChild('pcchild2',{read: ViewContainerRef}) containerref!: ViewContainerRef;
@@ -55,15 +21,13 @@ export class LayoutstartpointComponent implements OnInit {
     
     ngOnInit() {
 	this.http.get<any>(`/api/manager:messagehistory`).subscribe((res)=> {this.messagehistory=res.messagehistory;});
+	
     }
     constructor(private http:HttpClient){}
     ngAfterContentInit(){
     }
     showmessage(event: Event):void{
 	let intstructiontext= (event.target as HTMLInputElement).value;
-
-	
-
 	this.pagecubecomponentref=this.containerref.createComponent(LayoutpagecubeComponent);
 
 	let layoutpagecubetestdata1=  [[[{message:1},{message:2}],
@@ -73,7 +37,7 @@ export class LayoutstartpointComponent implements OnInit {
 //	this.pagecubecomponentref.setInput('layoutpagecube',
 //					   layoutpagecubetestdata1);
 	this.pagecubecomponentref.setInput('layoutpagecube',
-					   this.messagepro.pagerize(layoutpagecubetestdata2));
+					   layoutpagecubetestdata2);
 	
 	
     }

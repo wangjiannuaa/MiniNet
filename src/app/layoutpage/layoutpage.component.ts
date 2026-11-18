@@ -1,6 +1,6 @@
-import {Component, Input,viewChild} from '@angular/core';
+import {Component, Input,viewChild,inject} from '@angular/core';
 import {MXwidgetComponent } from '../mxwidget/mxwidget.component';
-
+import { Aspectofview } from '../aspectofview.llm';
 @Component({ 
   selector: 'bw-layoutpage',
     standalone: false,
@@ -13,12 +13,14 @@ import {MXwidgetComponent } from '../mxwidget/mxwidget.component';
     templateUrl: './layoutpage.component.html',
 })
 export class LayoutpageComponent {
-    @Input() layoutpage!:any;
-    
-    layoutpageheight:number=50*12;
-    layoutpagewidth:number=1100;
-    constructor(){}
-    get layoutpageht(){return this.layoutpageheight.toString()+"px"; }
-    get layoutpagewh(){return this.layoutpagewidth.toString()+"px";}
+     @Input() layoutpage!:any;
+     public aview = inject(Aspectofview);
+     layoutpageheight:number;
+     layoutpagewidth:number;
+    constructor(){
+	this.layoutpageheight=this.aview.LAYOUTPAGEHEIGHT;
+        this.layoutpagewidth=this.aview.LAYOUTPAGEWIDTH;}
+     get layoutpageht(){return this.layoutpageheight.toString()+"px"; }
+     get layoutpagewh(){return this.layoutpagewidth.toString()+"px"; }
 
 }

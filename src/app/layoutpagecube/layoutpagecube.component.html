@@ -1,14 +1,12 @@
-<div class="layoutpagecube" #pcChild3>
+<div class="layoutpagecube"  #pcChild3>
 
-    <div>
-	       <bw-layoutpagegroup [layoutpagegroup]= layoutpagecube[0] > 
-	       </bw-layoutpagegroup >
-    </div >
+
+     <ng-container #pcChild4>
+    </ng-container>
+
+    <div class="layoutdirector">
+      <bw-layoutdirector [layoutpagecube]=layoutpagecube>
+      </bw-layoutdirector>
+    </div>
 
 </div>
-<div class="layoutdirector">
-  <bw-layoutdirector [layoutpagecube]=layoutpagecube>
-  </bw-layoutdirector>
-</div>
-
-
