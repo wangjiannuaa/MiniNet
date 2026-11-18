@@ -12,26 +12,27 @@ export class MessageProcessor {
 
         let pagecapacity:number=10;
 	let pagegroupquote:number=2;
-		let page=[];//cab
-	    let data=[[[]]];//aim building
-	let pagegroup=[[]];//train
+	
+	let page:any=[];//cab
+	let data:any=[];//aim building
+	let pagegroup:any=[];//train
 
 	(messagelist as []).forEach(function(item:{},index:number){
        
 	
 
-		let wherepage = index%(pagecapacity);//0--pagecapacity
-		let whatpage = index/(pagecapacity);
+	    let wherepage:number = index%(pagecapacity);//0--pagecapacity
+	    let whatpage:number = Math.floor(index/pagecapacity);
 		    whatpage = whatpage%pagegroupquote;//0--pagegroupquote
-		let whatgroup = index/pagecapacity;
-	            whatgroup = whatgroup/pagegroupquote;
+	    let whatgroup:number = Math.floor(index/pagecapacity);
+	    whatgroup = Math.floor(whatgroup/pagegroupquote);
 		
 		page.splice(wherepage,0,item);
 
-	        if(wherepage == 0 && page.length == pagecapacity)
+	    if((wherepage == (pagecapacity-1) && page.length == pagecapacity) || (index+1) == messagelist.length )//full or null
 		{pagegroup.splice(whatpage,0,page);page=[];}
-	    if(whatpage == 0 && (pagegroup.length == pagegroupquote || (index+1) == messagelist.length ))
-		{data.splice(whatgroup,0,pagegroup);pagegroup=[[]];}
+	    if((whatpage == (pagegroupquote-1) && pagegroup.length == pagegroupquote) || (index+1) == messagelist.length )
+		{data.splice(whatgroup,0,pagegroup);pagegroup=[];}
 	
 	    });
 		    console.log("dt",data); return data;
@@ -68,11 +69,11 @@ export class LayoutstartpointComponent implements OnInit {
 	let layoutpagecubetestdata1=  [[[{message:1},{message:2}],
 					[{message:3},{message:4}]],[[{message:5},{message:6}],[{message:7}]]];
 
-	let layoutpagecubetestdata2=  [{message:1},{message:2},{message:3},{message:4},{message:5},{message:6},{message:7},{message:8},{message:4},{message:5},{message:6},{message:7},{message:8},{message:4},{message:5},{message:6},{message:7},{message:8},{message:4},{message:5},{message:6},{message:7},{message:8},{message:4},{message:5},{message:6},{message:7},{message:8}];
+	let layoutpagecubetestdata2=  [{message:1},{message:2},{message:3},{message:4},{message:5},{message:6},{message:7},{message:8},{message:9},{message:10},{message:11},{message:12},{message:13},{message:14},{message:15},{message:16},{message:17},{message:18},{message:19},{message:20},{message:21},{message:22},{message:23},{message:24},{message:25},{message:26},{message:27},{message:28}];
 //	this.pagecubecomponentref.setInput('layoutpagecube',
 //					   layoutpagecubetestdata1);
 	this.pagecubecomponentref.setInput('layoutpagecube',
-					   this.messagepro.pagerize(layoutpagecubetestdata1));
+					   this.messagepro.pagerize(layoutpagecubetestdata2));
 	
 	
     }

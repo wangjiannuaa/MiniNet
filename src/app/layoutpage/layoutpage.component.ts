@@ -15,7 +15,7 @@ import {MXwidgetComponent } from '../mxwidget/mxwidget.component';
 export class LayoutpageComponent {
     @Input() layoutpage!:any;
     
-    layoutpageheight:number=50*10;
+    layoutpageheight:number=50*12;
     layoutpagewidth:number=1100;
     constructor(){}
     get layoutpageht(){return this.layoutpageheight.toString()+"px"; }
