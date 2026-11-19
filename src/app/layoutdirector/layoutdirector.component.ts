@@ -19,10 +19,10 @@ export class LayoutdirectorComponent {
     public aview = inject(Aspectofview);
     layoutpagecubeed:any=[];
     
-    @ViewChild('pcChild4',{read:ViewContainerRef,static:false}) containerref!:ViewContainerRef;
+    @ViewChild('pcChild5',{read:ViewContainerRef}) containerref!:ViewContainerRef;
     layoutpagegroupcomponentref!:ComponentRef<LayoutpagegroupComponent>;
     pageSize = signal(0);hidePageSize = signal(false);showPageSizeOptions = signal(true);
-    pageSizeOptions = signal([5, 10, 25]);
+    pageSizeOptions = signal([5, 10, 20]);
     pageIndex = signal(0);
 
     
@@ -37,11 +37,10 @@ export class LayoutdirectorComponent {
     this.pageEvent.set(e);
     this.length.set(e.length);
     this.pageSize.set(e.pageSize);
-	this.pageIndex.set(e.pageIndex);
+    this.pageIndex.set(e.pageIndex);
 
-		this.layoutpagegroupcomponentref=this.containerref.createComponent(LayoutpagegroupComponent);
-		this.layoutpagegroupcomponentref.setInput('layoutpagegroup',
-						  this.layoutpagecubeed[this.pageIndex()]);
+
+	
     }
 
     setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -61,14 +60,16 @@ export class LayoutdirectorComponent {
 	this.pageSize.set(this.aview.LAYOUTPAGECAPACITY*this.aview.LAYOUTPAGEGROUPQUOTE);
 	this.length.set(this.layoutpagecube.length);
         this.pageIndex.set(0);
-	
+
     }
     ngAfterContentChecked():void{
 
     }
 
     ngAfterViewInit():void{
-
+	this.layoutpagegroupcomponentref=this.containerref.createComponent(LayoutpagegroupComponent);
+	this.layoutpagegroupcomponentref.setInput('layoutpagegroup',
+						  this.layoutpagecubeed[this.pageIndex()]);
     }
     ngAfterViewChecked():void{
 
@@ -78,7 +79,7 @@ export class LayoutdirectorComponent {
     }
     pagerize(messagelist:any):any{
 
-        let pagecapacity:number=this.pageSize();
+        let pagecapacity:number=this.aview.LAYOUTPAGECAPACITY;
 	let pagegroupquote:number=this.aview.LAYOUTPAGEGROUPQUOTE;
 	
 	let page:any=[];//cab
