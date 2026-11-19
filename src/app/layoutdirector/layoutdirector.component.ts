@@ -1,4 +1,4 @@
-import { Component,signal,AfterContentInit,AfterViewInit,ViewContainerRef,ComponentRef,ViewChild,ViewEncapsulation,Input,AfterViewChecked,inject } from '@angular/core';
+import { Component,signal,AfterContentInit,AfterContentChecked,AfterViewInit,ViewContainerRef,ComponentRef,ViewChild,ViewEncapsulation,Input,AfterViewChecked,inject,OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -21,8 +21,7 @@ export class LayoutdirectorComponent {
     
     @ViewChild('pcChild4',{read:ViewContainerRef}) containerref!:ViewContainerRef;
     layoutpagegroupcomponentref!:ComponentRef<LayoutpagegroupComponent>;
-    
-    pageSize = signal(10);hidePageSize = signal(false);showPageSizeOptions = signal(true);
+    pageSize = signal(0);hidePageSize = signal(false);showPageSizeOptions = signal(true);
     pageSizeOptions = signal([5, 10, 25]);
     pageIndex = signal(0);
 
@@ -38,7 +37,11 @@ export class LayoutdirectorComponent {
     this.pageEvent.set(e);
     this.length.set(e.length);
     this.pageSize.set(e.pageSize);
-    this.pageIndex.set(e.pageIndex);
+	this.pageIndex.set(e.pageIndex);
+
+		this.layoutpagegroupcomponentref=this.containerref.createComponent(LayoutpagegroupComponent);
+		this.layoutpagegroupcomponentref.setInput('layoutpagegroup',
+						  this.layoutpagecubeed[this.pageIndex()]);
     }
 
     setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -48,18 +51,29 @@ export class LayoutdirectorComponent {
     }
 
     constructor(){}
+    ngOnInit():void{
+
+    }
     ngAfterContentInit():void{
 
 
 	this.layoutpagecubeed =this.pagerize(this.layoutpagecube);
-	this.pageSize.set(this.aview.LAYOUTPAGECAPACITY*this.layoutpagecubeed.length);
+	this.pageSize.set(this.aview.LAYOUTPAGECAPACITY*this.aview.LAYOUTPAGEGROUPQUOTE);
 	this.length.set(this.layoutpagecube.length);
+        this.pageIndex.set(0);
+	
+    }
+    ngAfterContentChecked():void{
+
+    }
+
+    ngAfterViewInit():void{
+
     }
     ngAfterViewChecked():void{
 
-	this.layoutpagegroupcomponentref=this.containerref.createComponent(LayoutpagegroupComponent);
-	this.layoutpagegroupcomponentref.setInput('layoutpagegroup',
-					    this.layoutpagecubeed[0]);
+
+
 
     }
     pagerize(messagelist:any):any{
