@@ -9,6 +9,8 @@
     <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
   </mat-form-field>
 </form>
-<ng-container #pcchild2>
-</ng-container>
+<div *ngIf="messagesearchresult">
+<bw-layoutpagecube [layoutpagecube]=messagesearchresult>
+</bw-layoutpagecube>
+</div>
 

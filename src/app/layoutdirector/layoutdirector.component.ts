@@ -19,7 +19,7 @@ export class LayoutdirectorComponent {
     public aview = inject(Aspectofview);
     layoutpagecubeed:any=[];
     
-    @ViewChild('pcChild4',{read:ViewContainerRef}) containerref!:ViewContainerRef;
+    @ViewChild('pcChild4',{read:ViewContainerRef,static:false}) containerref!:ViewContainerRef;
     layoutpagegroupcomponentref!:ComponentRef<LayoutpagegroupComponent>;
     pageSize = signal(0);hidePageSize = signal(false);showPageSizeOptions = signal(true);
     pageSizeOptions = signal([5, 10, 25]);
