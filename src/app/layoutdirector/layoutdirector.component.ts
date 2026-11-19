@@ -49,10 +49,11 @@ export class LayoutdirectorComponent {
 
     constructor(){}
     ngAfterContentInit():void{
-	this.pageSize.set(this.aview.LAYOUTPAGECAPACITY);
+
 
 	this.layoutpagecubeed =this.pagerize(this.layoutpagecube);
-	
+	this.pageSize.set(this.aview.LAYOUTPAGECAPACITY*this.layoutpagecubeed.length);
+	this.length.set(this.layoutpagecube.length);
     }
     ngAfterViewChecked():void{
 
