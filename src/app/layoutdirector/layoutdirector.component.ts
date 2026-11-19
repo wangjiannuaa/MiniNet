@@ -22,7 +22,7 @@ export class LayoutdirectorComponent {
     @ViewChild('pcChild5',{read:ViewContainerRef}) containerref!:ViewContainerRef;
     layoutpagegroupcomponentref!:ComponentRef<LayoutpagegroupComponent>;
     pageSize = signal(0);hidePageSize = signal(false);showPageSizeOptions = signal(true);
-    pageSizeOptions = signal([5, 10, 20]);
+    pageSizeOptions = signal([5, 10]);
     pageIndex = signal(0);
 
     
@@ -34,11 +34,27 @@ export class LayoutdirectorComponent {
     pageEvent = signal<PageEvent | undefined>(undefined);
 
     handlePageEvent(e: PageEvent) {
-    this.pageEvent.set(e);
-    this.length.set(e.length);
-    this.pageSize.set(e.pageSize);
-    this.pageIndex.set(e.pageIndex);
+	this.pageEvent.set(e);
+	this.length.set(e.length);
+	let oldpagesize=this.pageSize();
+	this.pageSize.set(e.pageSize);
+	let oldpageindex=this.pageIndex();
+	this.pageIndex.set(e.pageIndex);
 
+
+	if(oldpagesize != this.pageSize()){
+	this.aview.LAYOUTPAGECAPACITY=this.pageSize();
+	this.layoutpagecubeed =this.pagerize(this.layoutpagecube);
+	this.layoutpagegroupcomponentref.setInput('layoutpagegroup',
+						  this.layoutpagecubeed[this.pageIndex()]);
+	}
+
+	if(oldpageindex != this.pageIndex() && oldpagesize == this.pageSize()){
+	    	this.layoutpagegroupcomponentref.setInput('layoutpagegroup',
+							  this.layoutpagecubeed[this.pageIndex()]);
+	}
+
+	
 
 	
     }
@@ -77,6 +93,7 @@ export class LayoutdirectorComponent {
 
 
     }
+
     pagerize(messagelist:any):any{
 
         let pagecapacity:number=this.aview.LAYOUTPAGECAPACITY;

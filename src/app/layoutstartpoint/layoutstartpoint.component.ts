@@ -31,7 +31,7 @@ export class LayoutstartpointComponent implements OnInit {
 	let layoutpagecubetestdata1=  [[[{message:1},{message:2}],
 					[{message:3},{message:4}]],[[{message:5},{message:6}],[{message:7}]]];
 
-	let layoutpagecubetestdata2=  [{message:1},{message:2},{message:3},{message:4},{message:5},{message:6},{message:7},{message:8},{message:9},{message:10},{message:11},{message:12},{message:13},{message:14},{message:15},{message:16},{message:17},{message:18},{message:19},{message:20},{message:21},{message:22},{message:23},{message:24},{message:25},{message:26},{message:27},{message:28}];
+	let layoutpagecubetestdata2=  [{message:1},{message:2},{message:3},{message:4},{message:5},{message:6},{message:7},{message:8},{message:9},{message:10},{message:11},{message:12},{message:13},{message:14},{message:15},{message:16},{message:17},{message:18},{message:19},{message:20},{message:21},{message:22},{message:23},{message:24},{message:25},{message:26},{message:27},{message:28},{message:29},{message:30},{message:31},{message:32},{message:33},{message:34},{message:35},{message:36},{message:37},{message:38}];
 //	this.pagecubecomponentref.setInput('layoutpagecube',
 //					   layoutpagecubetestdata1);
         this.messagesearchresult=layoutpagecubetestdata2;

@@ -8,9 +8,9 @@ import { Service } from '@angular/core';
 @Service()
 export class Aspectofview {
     private _layoutpageheight:number=600;
-    private _layoutpagewidth:number=1300;
+    private _layoutpagewidth:number=1100;
     private _layoutpagecapacity:number=10;
-    private _layoutpagegroupquote:number=2;
+    private _layoutpagegroupquote:number=1;
     constructor(){}
     public get LAYOUTPAGEGROUPQUOTE() {
     return this._layoutpagegroupquote;
