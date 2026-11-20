@@ -182,11 +182,8 @@ app.use((req, res, next) => {
 
 }
 
-interface User {
-  _id?: ObjectId; // optional when inserting
-  name: string;
-  email: string;
-}
+
+
 
 interface TableHead {
     selectrow():void;
@@ -196,29 +193,94 @@ interface TableTail {
     connectbyrow():void;//addition operator
     connectbycol():void;
 }
-class MessageRecords implements TableHead,TableTail
-{
-    _dateandTime?: Date;
-    _id?: ObjectId;
-    messageLevel!:any;
-    messageBody!:any;
+
+
+
+
+export interface User {
+  _id?: ObjectId; // optional when inserting
+  name: string;
+  email: string;
+}
+class UserRecords implements TableHead,TableTail,User{
+    constructor(public _id: ObjectId, public name: string, public email: string){
+	this._id=_id;
+	this.name=name;
+	this.email=email;
+    }
     selectrow():void{}
     selectcol():void{}
     connectbyrow():void{}//addition operator
     connectbycol():void{}
 }
-class CodeRecords implements TableHead,TableTail
+
+interface Issue {
+  _id?: ObjectId; 
+  name: string;
+  issuetext: string;
+}
+
+
+class IssueRecords implements TableHead,TableTail, Issue{
+     constructor(public _id: ObjectId, public name: string, public issuetext: string){
+	this._id=_id;
+	this.name=name;
+	this.issuetext=issuetext;
+    }
+   selectrow():void{}
+   selectcol():void{}
+   connectbyrow():void{}//addition operator
+   connectbycol():void{}
+
+}
+interface Code{
+    _dateandtime?: Date;
+    _name?: string;
+    codelevel:any;
+    codebody:any;
+
+}
+
+class CodeRecords implements TableHead,TableTail,Code
 {
-    _dateandTime?: Date;
-    _id?: ObjectId;
-    CodeLevel!:any;
-    CodeBody!:any;
+    constructor(public _dateandtime: Date, public _name: string, public codelevel: string,public codebody:string){
+	    this._dateandtime=_dateandtime;
+    this._name=_name;
+    this.codelevel=codelevel;
+	this.codebody=codebody;
+	
+    }
     selectrow():void{}
     selectcol():void{}
     connectbyrow():void{}//addition operator
     connectbycol():void{}
     
 }
+
+interface Message {
+    _dateandtime?: Date;
+    _name?: string;
+    messagelevel:any;
+    messagebody:any;
+
+}
+
+class MessageRecords implements TableHead,TableTail,Message
+{
+
+    constructor(public _dateandtime: Date, public _name: string, public messagelevel: string,public messagebody:string){
+	    this._dateandtime=_dateandtime;
+    this._name=_name;
+    this.messagelevel=messagelevel;
+	this.messagebody=messagebody;
+	
+    }
+    selectrow():void{}
+    selectcol():void{}
+    connectbyrow():void{}//addition operator
+    connectbycol():void{}
+}//很明显，消息来自于三角关系：USER，Issue，Code
+
 
 async function mdbstartup() {
   const uri = process.env['MONGO_URI'] || 'mongodb://localhost:27017';
