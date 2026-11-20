@@ -16,12 +16,6 @@ const angularApp = new AngularNodeAppEngine();
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
-
-interface User {
-  _id?: ObjectId; // optional when inserting
-  name: string;
-  email: string;
-}
  const enum artingcommand {
     startup,
     endup,
@@ -53,7 +47,7 @@ interface devicedriver extends selftestonlaunch{
 }
 
 
-class CuisineDevice implements devicedriver {
+class MixedRealityDevice implements devicedriver {
    declare public devicedrivername:string;
   constructor(name:string){this.devicedrivername=name;}
   selftest():string{return "pass";}
@@ -188,14 +182,45 @@ app.use((req, res, next) => {
 
 }
 
+interface User {
+  _id?: ObjectId; // optional when inserting
+  name: string;
+  email: string;
+}
 
+interface TableHead {
+    selectrow():void;
+    selectcol():void;
+}
+interface TableTail {
+    connectbyrow():void;//addition operator
+    connectbycol():void;
+}
+class MessageRecords implements TableHead,TableTail
+{
+    _dateandTime?: Date;
+    _id?: ObjectId;
+    messageLevel!:any;
+    messageBody!:any;
+    selectrow():void{}
+    selectcol():void{}
+    connectbyrow():void{}//addition operator
+    connectbycol():void{}
+}
+class CodeRecords implements TableHead,TableTail
+{
+    _dateandTime?: Date;
+    _id?: ObjectId;
+    CodeLevel!:any;
+    CodeBody!:any;
+    selectrow():void{}
+    selectcol():void{}
+    connectbyrow():void{}//addition operator
+    connectbycol():void{}
+    
+}
 
-
-
-
-
-
-async function mdbdemo() {
+async function mdbstartup() {
   const uri = process.env['MONGO_URI'] || 'mongodb://localhost:27017';
   const client = new MongoClient(uri);
   await client.connect();
