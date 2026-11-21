@@ -4,15 +4,16 @@ import {
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
+import {BlockchainService} from './server-modules/blockchain.service';
 import express from 'express';
 import { join } from 'node:path';
 import { MongoClient, ObjectId, WithId, Filter, UpdateFilter } from 'mongodb';
 //cloud
 //1data piper
 //2command loader
-
-	const app = express();
+const app = express();
 const angularApp = new AngularNodeAppEngine();
+const blockchainservice= new BlockchainService();
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
@@ -117,13 +118,6 @@ class MotherBoard implements plugin,addon,devicedriver{
     precommand():void{
 
 
-app.get('/api/repl:syntax', (req, res) => {
-    // Handle API request
-res.status(200).json({code:"2"});
-});
-
-
-
 
 /**
  * Serve static files from /browser
@@ -158,6 +152,21 @@ app.use((req, res, next) => {
 					      {position:2,name:"e",phase:"cart",status:"2020"}]});
     });
       
+app.get('/api/repl:syntax', (req, res) => {
+    // Handle API request
+res.status(200).json({code:"2"});
+});
+
+	app.get('/api/blockchain:status', async(req, res,next) => {
+	    // Handle API request
+
+	    try{
+		res.status(200).json(await blockchainservice.getStatus());
+	    } catch(error){next(error) }
+
+});
+
+
 
 	/**
 	 * Start the server if this module is the main entry point, or it is ran via PM2.
@@ -280,6 +289,7 @@ class MessageRecords implements TableHead,TableTail,Message
     connectbyrow():void{}//addition operator
     connectbycol():void{}
 }//很明显，消息来自于三角关系：USER，Issue，Code
+//message称为包括了smartcontract，order，cart等各种与客户设备交互的复杂信息。
 
 
 async function mdbstartup() {
