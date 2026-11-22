@@ -227,15 +227,21 @@ interface Issue {
   _id?: ObjectId; 
   name: string;
   issuetext: string;
-}
+}//view1:
+//view2:operator
+//view3:manager viewpoint,css组件(dom容器(js用户代码code))
 
 
 class IssueRecords implements TableHead,TableTail, Issue{
+     issuefragment:any;
      constructor(public _id: ObjectId, public name: string, public issuetext: string){
 	this._id=_id;
 	this.name=name;
-	this.issuetext=issuetext;
-    }
+	 this.issuetext=issuetext;
+	 this.issuefragment={};
+     }
+
+    
    selectrow():void{}
    selectcol():void{}
    connectbyrow():void{}//addition operator

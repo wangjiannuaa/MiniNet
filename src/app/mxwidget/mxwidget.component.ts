@@ -8,6 +8,7 @@ export enum EABI{
     order ="order",
     ledger = "ledger",
     ticket = "ticket",
+    issue= "issue",
 }
 
 @Component({

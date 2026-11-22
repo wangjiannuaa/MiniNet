@@ -39,6 +39,7 @@ import { OrderComponent } from './order/order.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { LedgerComponent } from './ledger/ledger.component';
 import { LayoutpagecubeComponent } from './layoutpagecube/layoutpagecube.component';
+import { IssueComponent } from './issue/issue.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { LayoutpagecubeComponent } from './layoutpagecube/layoutpagecube.compone
     TicketComponent,
     LedgerComponent,
     LayoutpagecubeComponent,
+    IssueComponent,
   ],
   imports: [
     BrowserModule,

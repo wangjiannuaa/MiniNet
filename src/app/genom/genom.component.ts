@@ -11,7 +11,7 @@ width:var(--genomwidth)}`],
   styleUrl: './genom.component.scss',
   templateUrl: './genom.component.html',
 })
-export class GenomComponent {
+export class GenomComponent {//embeded genom 规律驱动的repository
    @Input() message!:any;
     genomheight:number=50;
 	genomwidth:number=1100;
