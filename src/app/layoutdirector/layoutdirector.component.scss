@@ -1,3 +1,14 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:host {
+  @include mat.paginator-overrides((
+    container-text-color: orange,
+    container-background-color: grey,
+  ));
+}
+
+
 .toolbar {
   display: flex;
   gap: 16px;
@@ -7,7 +18,7 @@
   flex: 1 1 auto;
 }
 .layoutdirector{
-  display: inline-block;
+display:block;width:100%;
 }
 .layoutdirectorbuttonup{
     position:absolute;
@@ -17,7 +28,7 @@
 }
 .layoutdirectorbuttondown{
     position:absolute;
-    top:1300px;
-    left:1100px;
+    top:50px;
+    left:1150px;
       background-color: greenyellow;
 }

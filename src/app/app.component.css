@@ -10,16 +10,8 @@ main {
 }
 
 .debutgrouppageheader{
-        background-color: violet;
+   background-color: violet;
 }
 .grouppageheader{
-    background-color: violet;
-}
-.debutgrouppage{
-    display:none;
-}
-.grouppage{
-    display: block;
-    width:  1200px;
-    border-radius:999px;
+   background-color: violet;
 }

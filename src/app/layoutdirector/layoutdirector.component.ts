@@ -21,8 +21,9 @@ export class LayoutdirectorComponent {
     
     @ViewChild('pcChild5',{read:ViewContainerRef}) containerref!:ViewContainerRef;
     layoutpagegroupcomponentref!:ComponentRef<LayoutpagegroupComponent>;
-    pageSize = signal(0);hidePageSize = signal(false);showPageSizeOptions = signal(true);
-    pageSizeOptions = signal([5, 10]);
+    pageSize = signal(0);hidePageSize = signal(false);
+    showPageSizeOptions = signal(true);
+    pageSizeOptions = signal([1,2,3,4,5]);
     pageIndex = signal(0);
 
     
@@ -76,7 +77,7 @@ export class LayoutdirectorComponent {
 	this.pageSize.set(this.aview.LAYOUTPAGECAPACITY*this.aview.LAYOUTPAGEGROUPQUOTE);
 	this.length.set(this.layoutpagecube.length);
         this.pageIndex.set(0);
-
+	this.pageSizeOptions.set([1,2,3,4,5]);
     }
     ngAfterContentChecked():void{
 

@@ -1,5 +1,5 @@
-import { Component,Input } from '@angular/core';
-
+import { Component,Input,inject } from '@angular/core';
+import { Aspectofview } from '../aspectofview.llm';
 @Component({
   selector: 'bw-genom',
     standalone: false,
@@ -12,9 +12,14 @@ width:var(--genomwidth)}`],
   templateUrl: './genom.component.html',
 })
 export class GenomComponent {//embeded genom 规律驱动的repository
+   public aview = inject(Aspectofview);
    @Input() message!:any;
-    genomheight:number=50;
-	genomwidth:number=1100;
+    genomheight:number;
+    genomwidth:number;
+    constructor(){
+	this.genomheight=Math.floor(this.aview.LAYOUTPAGEHEIGHT/this.aview.LAYOUTPAGECAPACITY);
+        this.genomwidth=this.aview.LAYOUTPAGEWIDTH;
+    }
  
     get genomht(){return this.genomheight.toString()+"px"; }
     get genomwh(){return this.genomwidth.toString()+"px";}
