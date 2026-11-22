@@ -15,7 +15,7 @@ const app = express();
 const angularApp = new AngularNodeAppEngine();
 const blockchainservice= new BlockchainService();
 
-const browserDistFolder = join(import.meta.dirname, '../browser');
+const browserDistFolder = join(import.meta.dirname, '../browser');//both for managerment and react
 
  const enum artingcommand {
     startup,
