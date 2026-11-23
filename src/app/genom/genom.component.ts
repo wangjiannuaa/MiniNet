@@ -4,8 +4,7 @@ import { Aspectofview } from '../aspectofview.llm';
   selector: 'bw-genom',
     standalone: false,
     host:{'[style.--genomheight]':'genomht','[style.--genomwidth]':'genomwh'},
-    styles:[`.genom{display: inline-block;
-padding-bottom:10px;
+    styles:[`.genom{display: block;
 height:var(--genomheight);
 width:var(--genomwidth)}`],
   styleUrl: './genom.component.scss',

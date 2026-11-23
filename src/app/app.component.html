@@ -1,7 +1,9 @@
 <main class="main" (keydown.enter)="bubble($event)">
-  @if (!isLoggedin){
 
- <bw-chief-executive-officer/>
+   <div>
+   <bw-chief-executive-officer/>
+ </div>
+  @if (!isLoggedin){
  <div>
 
     <div [class]= "debut ? 'debutgrouppageheader' : 'grouppageheader'">
