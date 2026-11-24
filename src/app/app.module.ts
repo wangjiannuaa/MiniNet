@@ -40,6 +40,7 @@ import { TicketComponent } from './ticket/ticket.component';
 import { LedgerComponent } from './ledger/ledger.component';
 import { LayoutpagecubeComponent } from './layoutpagecube/layoutpagecube.component';
 import { IssueComponent } from './issue/issue.component';
+import { SVGComponent } from './svg/svg.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { IssueComponent } from './issue/issue.component';
     LedgerComponent,
     LayoutpagecubeComponent,
     IssueComponent,
+    SVGComponent,
   ],
   imports: [
     BrowserModule,
