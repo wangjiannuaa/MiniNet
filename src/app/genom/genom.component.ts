@@ -1,6 +1,7 @@
-import { Component,Input,inject,ComponentRef,ViewContainerRef,ViewChild } from '@angular/core';
+import { Component,Input,inject,ComponentRef,ViewContainerRef,ViewChild,ElementRef,Renderer2 } from '@angular/core';
 import { Aspectofview } from '../aspectofview.llm';
 import { SVGComponent } from '../svg/svg.component';
+
 @Component({
   selector: 'bw-genom',
     standalone: false,
@@ -21,7 +22,7 @@ export class GenomComponent {//embeded genom 规律驱动的repository
     svgcomponentref!:ComponentRef<SVGComponent>;
 
     
-    constructor(){
+    constructor(private renderer: Renderer2){
 	this.genomheight=Math.floor(this.aview.LAYOUTPAGEHEIGHT/this.aview.LAYOUTPAGECAPACITY);
         this.genomwidth=this.aview.LAYOUTPAGEWIDTH;
     }
@@ -32,7 +33,11 @@ export class GenomComponent {//embeded genom 规律驱动的repository
     OnGenom(){//runtime container invokepoint in mininet role
 	//vs microsoft dipatcher net macro, here is concise
 	this.svgcomponentref=this.containerref.createComponent(SVGComponent);
-//	this.svgcomponentref.location.nativeElement
+	const messageleveltext=this.renderer.createText(this.message.level);
+	const messagelevelnode=this.renderer.createElement('h2');
+	this.renderer.appendChild(messagelevelnode,messageleveltext);
+	
+	this.renderer.appendChild(this.svgcomponentref.location.nativeElement,messagelevelnode);
 //	this.svgcomponentref.setInput('innerHTML',  '<polyline  fill=\"none\" stroke=\"#0074d9\" stroke-width=\"3\" points=\"0,120 20,60 40,80 60,20\"/>');
 
     }
