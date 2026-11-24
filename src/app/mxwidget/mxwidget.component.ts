@@ -1,15 +1,5 @@
 import { Component,Input,ElementRef,ContentChild,AfterContentInit} from '@angular/core';
-export enum EABI{
-    genom="genom",
-    neuro="neuron",
-    base ="base",
-    net  ="net",
-    cart ="cart",
-    order ="order",
-    ledger = "ledger",
-    ticket = "ticket",
-    issue= "issue",
-}
+import { EABI } from '../eabi.message';
 
 @Component({
   selector: 'bw-mxwidget',

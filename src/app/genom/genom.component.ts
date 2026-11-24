@@ -22,4 +22,11 @@ export class GenomComponent {//embeded genom 规律驱动的repository
  
     get genomht(){return this.genomheight.toString()+"px"; }
     get genomwh(){return this.genomwidth.toString()+"px";}
+
+    OnGenom(){//runtime container invokepoint in mininet role
+	//vs microsoft dipatcher net macro, here is concise
+	
+
+    }
+    
 }

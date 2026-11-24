@@ -8,6 +8,7 @@ import {BlockchainService} from './server-modules/blockchain.service';
 import express from 'express';
 import { join } from 'node:path';
 import { MongoClient, ObjectId, WithId, Filter, UpdateFilter } from 'mongodb';
+import { EABI } from './app/eabi.message';
 //cloud
 //1data piper
 //2command loader
@@ -274,7 +275,7 @@ class CodeRecords implements TableHead,TableTail,Code
 
 interface Message {
     _dateandtime?: Date;
-    _name?: string;
+    _name?: EABI;
     messagelevel:any;
     messagebody:any;
 
@@ -286,7 +287,7 @@ interface Message {
 class MessageRecords implements TableHead,TableTail,Message
 {
 
-    constructor(public _dateandtime: Date, public _name: string, public messagelevel: string,public messagebody:string,
+    constructor(public _dateandtime: Date, public _name: EABI, public messagelevel: string,public messagebody:string,
 		public    _from: UserId,
 	public	_to: UserId,
    public about: any
