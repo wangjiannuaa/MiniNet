@@ -204,15 +204,15 @@ interface TableTail {
 }
 
 
-
+type UserId = ObjectId;
 
 export interface User {
-  _id?: ObjectId; // optional when inserting
+  _id?: UserId; // optional when inserting
   name: string;
   email: string;
 }
 class UserRecords implements TableHead,TableTail,User{
-    constructor(public _id: ObjectId, public name: string, public email: string){
+    constructor(public _id: UserId, public name: string, public email: string){
 	this._id=_id;
 	this.name=name;
 	this.email=email;
@@ -222,9 +222,9 @@ class UserRecords implements TableHead,TableTail,User{
     connectbyrow():void{}//addition operator
     connectbycol():void{}
 }
-
+type IssueId =ObjectId;
 interface Issue {
-  _id?: ObjectId; 
+  _id?: IssueId; 
   name: string;
   issuetext: string;
 }//view1:
@@ -234,7 +234,7 @@ interface Issue {
 
 class IssueRecords implements TableHead,TableTail, Issue{
      issuefragment:any;
-     constructor(public _id: ObjectId, public name: string, public issuetext: string){
+     constructor(public _id: IssueId, public name: string, public issuetext: string){
 	this._id=_id;
 	this.name=name;
 	 this.issuetext=issuetext;
@@ -278,17 +278,26 @@ interface Message {
     messagelevel:any;
     messagebody:any;
 
+    _from: UserId;
+    _to: UserId;
+    about: any;
 }
 
 class MessageRecords implements TableHead,TableTail,Message
 {
 
-    constructor(public _dateandtime: Date, public _name: string, public messagelevel: string,public messagebody:string){
+    constructor(public _dateandtime: Date, public _name: string, public messagelevel: string,public messagebody:string,
+		public    _from: UserId,
+	public	_to: UserId,
+   public about: any
+	       ){
 	    this._dateandtime=_dateandtime;
     this._name=_name;
     this.messagelevel=messagelevel;
 	this.messagebody=messagebody;
-	
+	this._from=_from;
+	this._to=_to;
+	this.about=about;
     }
     selectrow():void{}
     selectcol():void{}
