@@ -91,111 +91,7 @@ interface Measurement extends tool{
 interface Estimation extends tool{
 
 }*/
-
-
-
-//reshuffling starting point
-class MotherBoard implements plugin,addon,devicedriver{
- public brandname:string;
-  public typename:string;
-  declare public devicedrivername:string;
-
-  constructor(brandname:string,typename:string,devicedrivername:string){
-    this.brandname=brandname;
-    this.typename=typename;
-    this.devicedrivername=devicedrivername;
-  }
-  selftest():string{
-
-
-
-
-    return "brandname:"+this.brandname+"typename:"+this.typename+this.devicedrivername+"devicedrivername"+"pass";}
-  plugin():void{}
-  plugout():void{}
-  register():void{}
-  deregister():void{}
-
-    precommand():void{
-
-
-
-/**
- * Serve static files from /browser
- */
-app.use(
-  express.static(browserDistFolder, {
-    maxAge: '1y',
-    index: false,
-    redirect: false,
-  }),
-);
-
-/**
- * Handle all other requests by rendering the Angular application.
- */
-app.use((req, res, next) => {
-  angularApp
-    .handle(req)
-    .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next(),
-    )
-    .catch(next);
-});
-
-    app.get('/api/selftest:syntax', (req, res) => {
-    // Handle API request
-      res.status(200).json({selftest:[{position:1,name:"motherboard",status:instance.selftest()}]});
-    });
-    app.get('/api/manager:messagehistory', (req, res) => {
-    // Handle API request
-	res.status(200).json({messagehistory:[{position:1,name:"w",phase:"genom",status:"dev"},
-					      {position:2,name:"e",phase:"cart",status:"2020"}]});
-    });
-      
-app.get('/api/repl:syntax', (req, res) => {
-    // Handle API request
-res.status(200).json({code:"2"});
-});
-
-	app.get('/api/blockchain:status', async(req, res,next) => {
-	    // Handle API request
-
-	    try{
-		res.status(200).json(await blockchainservice.getStatus());
-	    } catch(error){next(error) }
-
-});
-
-
-
-	/**
-	 * Start the server if this module is the main entry point, or it is ran via PM2.
-	 * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
-	 */
-	if (isMainModule(import.meta.url) || process.env['pm_id']) {
-	    const port = process.env['PORT'] || 4000;
-	    app.listen(port, (error) => {
-		if (error) {
-		    throw error;
-		}
-
-		console.log(`Node Express server listening on http://localhost:${port}`);
-	    });
-}
-
-  }
-  timerstart():void{}
-  timerstop():void{}
-  command():void{}
-  postcommand():void{}
-
-}
-
-
-
-
-interface TableHead {
+interface TableHead {//"+" location
     selectrow():void;
     selectcol():void;
 }
@@ -233,7 +129,7 @@ interface Issue {
 //view3:manager viewpoint,css组件(dom容器(js用户代码code))
 
 
-class IssueRecords implements TableHead,TableTail, Issue{
+class IssueRecord implements TableHead,TableTail, Issue{
      issuefragment:any;
      constructor(public _id: IssueId, public name: string, public issuetext: string){
 	this._id=_id;
@@ -257,7 +153,7 @@ interface Code{
 
 }
 
-class CodeRecords implements TableHead,TableTail,Code
+class CodeRecord implements TableHead,TableTail,Code
 {
     constructor(public _dateandtime: Date, public _name: string, public codelevel: string,public codebody:string){
 	    this._dateandtime=_dateandtime;
@@ -274,8 +170,8 @@ class CodeRecords implements TableHead,TableTail,Code
 }
 
 interface Message {
-    _dateandtime?: Date;
-    _name?: EABI;
+    _dateandtime: Date;
+    _name: EABI;
     messagelevel:any;
     messagebody:any;
 
@@ -284,9 +180,9 @@ interface Message {
     about: any;
 }
 
-class MessageRecords implements TableHead,TableTail,Message
+class MessageRecord implements TableHead,TableTail,Message
 {
-
+    
     constructor(public _dateandtime: Date, public _name: EABI, public messagelevel: string,public messagebody:string,
 		public    _from: UserId,
 	public	_to: UserId,
@@ -306,6 +202,141 @@ class MessageRecords implements TableHead,TableTail,Message
     connectbycol():void{}
 }//很明显，消息来自于三角关系：USER，Issue，Code
 //message称为包括了smartcontract，order，cart等各种与客户设备交互的复杂信息。
+
+
+
+//reshuffling starting point
+class MotherBoard implements plugin,addon,devicedriver{
+ public brandname:string;
+  public typename:string;
+  declare public devicedrivername:string;
+
+  constructor(brandname:string,typename:string,devicedrivername:string){
+    this.brandname=brandname;
+    this.typename=typename;
+    this.devicedrivername=devicedrivername;
+  }
+  selftest():string{
+
+
+
+
+    return "brandname:"+this.brandname+"typename:"+this.typename+this.devicedrivername+"devicedrivername"+"pass";}
+  plugin():void{}
+  plugout():void{}
+  register():void{}
+  deregister():void{}
+
+    precommand():void{
+
+  const uri = process.env['MONGO_URI'] || 'mongodb://localhost:27017';
+  const client = new MongoClient(uri);
+  client.connect();
+
+  const messagedb = client.db('messagedb');
+  const messages = messagedb.collection<Message>('messages');
+
+/* */
+
+/**
+ * Serve static files from /browser
+ */
+app.use(
+  express.static(browserDistFolder, {
+    maxAge: '1y',
+    index: false,
+    redirect: false,
+  }),
+);
+
+/**
+ * Handle all other requests by rendering the Angular application.
+ */
+app.use((req, res, next) => {
+  angularApp
+    .handle(req)
+    .then((response) =>
+      response ? writeResponseToNodeResponse(response, res) : next(),
+    ).catch(next);
+});
+
+    app.get('/api/selftest:syntax', (req, res) => {
+    // Handle API request
+      res.status(200).json({selftest:[{position:1,name:"motherboard",status:instance.selftest()}]});
+    });
+    app.get('/api/manager:messagehistory', (req, res) => {
+    // Handle API request
+	res.status(200).json({messagehistory:[{position:1,name:"w",phase:"genom",status:"dev"},
+					      {position:2,name:"e",phase:"cart",status:"2020"}]});
+    });
+      
+app.get('/api/repl:syntax', (req, res) => {
+    // Handle API request
+res.status(200).json({code:"2"});
+});
+
+	app.get('/api/blockchain:status', async(req,res,next) => {
+	    // Handle API request
+
+	    try{
+		res.status(200).json(await blockchainservice.getStatus());
+	    } catch(error){next(error) }
+});
+/*	app.get('/abi/message/:id', async(req, res,next) => {
+	    // Handle API request
+	    const messagename=req.params.id;
+	    const messageoptions=req.query;	    
+	    
+	    try{
+
+	// Find one (result type is WithId<User> | null)
+		const message = await messages.findOne({ _name: messagename } as Filter<Message>) as WithId<Message> | null;
+
+		res.status(200).json(message);
+	    } catch(error){next(error) }
+	});
+*/
+	
+	app.get('/basi/stream/:start', async(req, res,next) => {
+	    try{
+		res.status(200).json(await blockchainservice.startStream());
+	    } catch(error){next(error)}
+	});
+	app.get('/basi/stream/:end', async(req, res,next) => {
+	    try{
+		res.status(200).json(await blockchainservice.endStream());
+	    } catch(error){next(error)}
+	});
+
+
+	
+
+	/**
+	 * Start the server if this module is the main entry point, or it is ran via PM2.
+	 * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
+	 */
+	if (isMainModule(import.meta.url) || process.env['pm_id']) {
+	    const port = process.env['PORT'] || 4000;
+	    app.listen(port, (error) => {
+		if (error) {
+		    throw error;
+		}
+
+		console.log(`Node Express server listening on http://localhost:${port}`);
+	    });
+}
+
+  }
+  timerstart():void{}
+  timerstop():void{}
+  command():void{}
+  postcommand():void{}
+
+}
+
+
+
+
 
 
 async function mdbstartup() {

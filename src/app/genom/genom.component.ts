@@ -55,7 +55,6 @@ export class GenomComponent {//embeded genom 规律驱动的repository
 	
 	this.renderer.appendChild(this.svgcomponentref.location.nativeElement.firstChild,messageabouthtmlnode);
 
-//	this.svgcomponentref.setInput('innerHTML',  '<polyline  fill=\"none\" stroke=\"#0074d9\" stroke-width=\"3\" points=\"0,120 20,60 40,80 60,20\"/>');
 
     }
     OffGenom(){//runtime container invokepoint in mininet role

@@ -47,6 +47,7 @@ export class Activity implements BlockHead,BlockTail,Block//fiber thread
     connectbydate():void{}//in a daterange
     connectbyspace():void{}//with a trackcurve
     connectbyrule():void{};
+    
 }
 export class contribution implements BlockHead,BlockTail,Block
 {   constructor(public _id: BlockID,  public date: Date,public name: string,public content: any){
@@ -104,7 +105,8 @@ export class BlockchainService{
     }
     add(role: BlockModel,path: BlockchainPath):void{}
     remove(role: BlockModel,path: BlockchainPath):void{}
-    
+    endStream():void{}
+    startStream():void{}
     
     async checkoutStory(): Promise<any>{
 	//时间驱动（对于虚拟社会物体而言）或者规则驱动（对于社会物体object而言），或者规律驱动（对自然物体而言）
