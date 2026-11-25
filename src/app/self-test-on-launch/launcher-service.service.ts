@@ -9,7 +9,7 @@ export class LauncherService {
   observeLauncherTest():Observable<any>{
 
 	let observableany = this.httpprotocol.get<any>(
-	    '/api/selftest:syntax');
+	    '/api/selftest/syntax');
 
 
 	return observableany;

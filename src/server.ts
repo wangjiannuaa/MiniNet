@@ -119,7 +119,7 @@ class UserRecords implements TableHead,TableTail,User{
     connectbyrow():void{}//addition operator
     connectbycol():void{}
 }
-type IssueId =ObjectId;
+type IssueId = ObjectId;
 interface Issue {
   _id?: IssueId; 
   name: string;
@@ -168,10 +168,10 @@ class CodeRecord implements TableHead,TableTail,Code
     connectbycol():void{}
     
 }
-
+type MessageID = ObjectId;
 interface Message {
-    _dateandtime: Date;
-    _name: EABI;
+    _id: MessageID;
+    name: EABI;
     messagelevel:any;
     messagebody:any;
 
@@ -183,13 +183,13 @@ interface Message {
 class MessageRecord implements TableHead,TableTail,Message
 {
     
-    constructor(public _dateandtime: Date, public _name: EABI, public messagelevel: string,public messagebody:string,
+    constructor(public _id: MessageID, public name: EABI, public messagelevel: string,public messagebody:string,
 		public    _from: UserId,
 	public	_to: UserId,
    public about: any
 	       ){
-	    this._dateandtime=_dateandtime;
-    this._name=_name;
+	    this._id=_id;
+    this.name=name;
     this.messagelevel=messagelevel;
 	this.messagebody=messagebody;
 	this._from=_from;
@@ -203,7 +203,10 @@ class MessageRecord implements TableHead,TableTail,Message
 }//很明显，消息来自于三角关系：USER，Issue，Code
 //message称为包括了smartcontract，order，cart等各种与客户设备交互的复杂信息。
 
-
+				   const id=new ObjectId();
+				   const uidfrom=new ObjectId();
+				   const uidto=new ObjectId();
+const testmessage=new MessageRecord(id,EABI.genom,"freshman","",uidfrom,uidto,{html:{element:'rect',attributes:[['x',"10"],['height',"180"],['y',"10"],['width',"180"],['id',"MyRect"]]},styles:[['stroke', "black"],['fill',"blue"],['paint-order',"stroke"]]});
 
 //reshuffling starting point
 class MotherBoard implements plugin,addon,devicedriver{
@@ -234,9 +237,11 @@ class MotherBoard implements plugin,addon,devicedriver{
   client.connect();
 
   const messagedb = client.db('messagedb');
-  const messages = messagedb.collection<Message>('messages');
+	const messages = messagedb.collection<Message>('messages');
+		console.log(testmessage);
+  
 
-/* */
+/* const insertResult = messages.insertOne(testmessage as Message);*/
 
 /**
  * Serve static files from /browser
@@ -260,42 +265,42 @@ app.use((req, res, next) => {
     ).catch(next);
 });
 
-    app.get('/api/selftest:syntax', (req, res) => {
-    // Handle API request
+    app.get('/api/selftest/:syntax', (req, res) => {
+   
       res.status(200).json({selftest:[{position:1,name:"motherboard",status:instance.selftest()}]});
     });
-    app.get('/api/manager:messagehistory', (req, res) => {
-    // Handle API request
+    app.get('/api/manager/:messagehistory', (req, res) => {
+
 	res.status(200).json({messagehistory:[{position:1,name:"w",phase:"genom",status:"dev"},
 					      {position:2,name:"e",phase:"cart",status:"2020"}]});
     });
       
-app.get('/api/repl:syntax', (req, res) => {
+app.get('/api/repl/:syntax', (req, res) => {
     // Handle API request
 res.status(200).json({code:"2"});
 });
 
-	app.get('/api/blockchain:status', async(req,res,next) => {
+	app.get('/api/blockchain/:status', async(req,res,next) => {
 	    // Handle API request
 
 	    try{
 		res.status(200).json(await blockchainservice.getStatus());
 	    } catch(error){next(error) }
 });
-/*	app.get('/abi/message/:id', async(req, res,next) => {
-	    // Handle API request
+	app.get('/abi/message/:id', async(req, res,next) => {
+	 
 	    const messagename=req.params.id;
-	    const messageoptions=req.query;	    
+	    const messageoptions=req.query;
 	    
 	    try{
 
-	// Find one (result type is WithId<User> | null)
-		const message = await messages.findOne({ _name: messagename } as Filter<Message>) as WithId<Message> | null;
-
-		res.status(200).json(message);
+/*
+		const message = await messages.findOne({ name: messagename } as Filter<Message>) as WithId<Message> | null;
+*/
+		res.status(200).json(testmessage as Message);
 	    } catch(error){next(error) }
 	});
-*/
+
 	
 	app.get('/basi/stream/:start', async(req, res,next) => {
 	    try{

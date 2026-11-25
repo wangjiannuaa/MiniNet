@@ -11,7 +11,7 @@ export class ProductService {
     observeProduct():Observable<Product>{
 
 	let observableprod = this.httpprotocol.get<Product>(
-	    'api/product/:id');
+	    'api/product/id');
 	//	let product = new Product("fish");
 	
 	return observableprod;

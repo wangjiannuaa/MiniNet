@@ -33,7 +33,7 @@ export class GenomComponent {//embeded genom 规律驱动的repository
     OnGenom(){//runtime container invokepoint in mininet role
 	//vs microsoft dipatcher net macro, here is concise
 	this.svgcomponentref=this.containerref.createComponent(SVGComponent);
-	const messageleveltext=this.renderer.createText(this.message.level);
+	const messageleveltext=this.renderer.createText(this.message.messagelevel);
 	const messagelevelnode=this.renderer.createElement('h2');
 	this.renderer.appendChild(messagelevelnode,messageleveltext);
 	

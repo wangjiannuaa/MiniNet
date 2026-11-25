@@ -36,7 +36,7 @@ export class REPLComponent implements OnInit,AfterViewInit ,AfterViewChecked,Aft
  
     ngOnInit() {
 
-	this.http.get<any>(`/api/repl:syntax`).subscribe((res)=> {this.REPLSyntax=JSON.stringify(res);});
+	this.http.get<any>(`/api/repl/syntax`).subscribe((res)=> {this.REPLSyntax=JSON.stringify(res);});
 	
     }
     constructor(private http:HttpClient,private REPLInputElement:ElementRef,private snackbar:MatSnackBar){
