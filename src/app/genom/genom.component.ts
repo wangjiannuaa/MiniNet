@@ -38,6 +38,23 @@ export class GenomComponent {//embeded genom 规律驱动的repository
 	this.renderer.appendChild(messagelevelnode,messageleveltext);
 	
 	this.renderer.appendChild(this.svgcomponentref.location.nativeElement,messagelevelnode);
+	let svgNS="http://www.w3.org/2000/svg";
+	const messageabouthtmlnode=this.renderer.createElement(this.message.about.html.element,svgNS);
+	
+
+	let thisrenderer = this.renderer;
+	this.message.about.html.attributes.forEach(function(item:[string,string],index:number){//bigendian also called controlling inversion
+	   thisrenderer.setAttribute(messageabouthtmlnode,item[0],item[1]);
+
+	});
+	this.message.about.styles.forEach(function(item:[string,string],index:number){//bigendian also called controlling inversion
+	   thisrenderer.setStyle(messageabouthtmlnode,item[0],item[1]);
+
+	});
+	
+	
+	this.renderer.appendChild(this.svgcomponentref.location.nativeElement.firstChild,messageabouthtmlnode);
+
 //	this.svgcomponentref.setInput('innerHTML',  '<polyline  fill=\"none\" stroke=\"#0074d9\" stroke-width=\"3\" points=\"0,120 20,60 40,80 60,20\"/>');
 
     }

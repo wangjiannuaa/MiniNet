@@ -1,0 +1,7 @@
+chart polyline {
+transition: stroke 0.3s ease;
+}
+
+chart polyline:hover {
+stroke: red;
+}
