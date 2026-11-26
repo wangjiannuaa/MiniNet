@@ -206,7 +206,7 @@ class MessageRecord implements TableHead,TableTail,Message
 				   const uidfrom=new ObjectId();
 const uidto=new ObjectId();
 
-const about=JSON.stringify({html:{element:'rect',attributes:[['x',"10"],['height',"180"],['y',"10"],['width',"180"],['id',"MyRect"]]},styles:[['stroke', "black"],['fill',"blue"],['paint-order',"stroke"]]});
+const about=JSON.stringify({html:{element:'rect',attributes:[['x',"10"],['height',"180"],['y',"10"],['width',"180"],['id',"MyRect"],['class',"rect"]]},styles:[['stroke', "black"],['fill',"blue"],['paint-order',"stroke"],['animation',"grow-and-color 10s ease-in-out forwards"]]});
 
 const testmessage=new MessageRecord(id,EABI.genom,"freshman","",uidfrom,uidto,about);
 
@@ -240,7 +240,7 @@ class MotherBoard implements plugin,addon,devicedriver{
 
   const messagedb = client.db('messagedb');
 	const messages = messagedb.collection<Message>('messages');
-		
+      messages.drop();
    const insertmessage=testmessage as Message;
       console.log("Message:",insertmessage);
       (async function():Promise<any>{

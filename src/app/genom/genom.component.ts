@@ -1,4 +1,4 @@
-import { Component,Input,inject,ComponentRef,ViewContainerRef,ViewChild,ElementRef,Renderer2 } from '@angular/core';
+import { Component,Input,inject,ComponentRef,ViewContainerRef,ViewChild,ElementRef,Renderer2,RendererStyleFlags2 } from '@angular/core';
 import { Aspectofview } from '../aspectofview.llm';
 import { SVGComponent } from '../svg/svg.component';
 
@@ -48,7 +48,7 @@ export class GenomComponent {//embeded genom 规律驱动的repository
 
 	});
 	this.message.about.styles.forEach(function(item:[string,string],index:number){//bigendian also called controlling inversion
-	   thisrenderer.setStyle(messageabouthtmlnode,item[0],item[1]);
+	    thisrenderer.setStyle(messageabouthtmlnode,item[0],item[1],RendererStyleFlags2.DashCase);
 
 	});
 	
@@ -65,4 +65,5 @@ export class GenomComponent {//embeded genom 规律驱动的repository
     }
     PlayGenom(){}
     PauseGenom(){}
+    submit(){window.alert("sub");}
 }
