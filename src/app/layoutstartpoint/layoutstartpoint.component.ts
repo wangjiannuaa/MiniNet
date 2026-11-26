@@ -40,7 +40,7 @@ export class LayoutstartpointComponent implements OnInit {
 	/*	let layoutpagecubetestdata2=  [{message:1,level:"freshman",about:{html:{element:'rect',attributes:[['x',"10"],['height',"180"],['y',"10"],['width',"180"],['id',"MyRect"]]},styles:[['stroke', "black"],['fill',"blue"],['paint-order',"stroke"]]}}];*/
 
 
-        this.messagesearchresult=[{message:this.message._id,name:this.message.name,messagelevel:this.message.messagelevel,about:this.message.about}];
+        this.messagesearchresult=[{message:this.message._id,name:this.message.name,messagelevel:this.message.messagelevel,about:JSON.parse(this.message.about)}];
 	
 	
     }

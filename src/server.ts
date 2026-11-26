@@ -15,7 +15,6 @@ import { EABI } from './app/eabi.message';
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 const blockchainservice= new BlockchainService();
-
 const browserDistFolder = join(import.meta.dirname, '../browser');//both for managerment and react
 
  const enum artingcommand {
@@ -205,8 +204,11 @@ class MessageRecord implements TableHead,TableTail,Message
 
 				   const id=new ObjectId();
 				   const uidfrom=new ObjectId();
-				   const uidto=new ObjectId();
-const testmessage=new MessageRecord(id,EABI.genom,"freshman","",uidfrom,uidto,{html:{element:'rect',attributes:[['x',"10"],['height',"180"],['y',"10"],['width',"180"],['id',"MyRect"]]},styles:[['stroke', "black"],['fill',"blue"],['paint-order',"stroke"]]});
+const uidto=new ObjectId();
+
+const about=JSON.stringify({html:{element:'rect',attributes:[['x',"10"],['height',"180"],['y',"10"],['width',"180"],['id',"MyRect"]]},styles:[['stroke', "black"],['fill',"blue"],['paint-order',"stroke"]]});
+
+const testmessage=new MessageRecord(id,EABI.genom,"freshman","",uidfrom,uidto,about);
 
 //reshuffling starting point
 class MotherBoard implements plugin,addon,devicedriver{
@@ -230,7 +232,7 @@ class MotherBoard implements plugin,addon,devicedriver{
   register():void{}
   deregister():void{}
 
-    precommand():void{
+  precommand():void{
 
   const uri = process.env['MONGO_URI'] || 'mongodb://localhost:27017';
   const client = new MongoClient(uri);
@@ -238,11 +240,13 @@ class MotherBoard implements plugin,addon,devicedriver{
 
   const messagedb = client.db('messagedb');
 	const messages = messagedb.collection<Message>('messages');
-		console.log(testmessage);
-  
-
-/* const insertResult = messages.insertOne(testmessage as Message);*/
-
+		
+   const insertmessage=testmessage as Message;
+      console.log("Message:",insertmessage);
+      (async function():Promise<any>{
+	 
+ const insertResult = await messages.insertOne(insertmessage);
+	  console.log(insertResult);})();
 /**
  * Serve static files from /browser
  */
@@ -287,17 +291,18 @@ res.status(200).json({code:"2"});
 		res.status(200).json(await blockchainservice.getStatus());
 	    } catch(error){next(error) }
 });
-	app.get('/abi/message/:id', async(req, res,next) => {
+	app.get('/abi/message/:id',async (req, res,next) => {
 	 
 	    const messagename=req.params.id;
 	    const messageoptions=req.query;
-	    
+	    console.log(messagename);
 	    try{
 
-/*
+
 		const message = await messages.findOne({ name: messagename } as Filter<Message>) as WithId<Message> | null;
-*/
-		res.status(200).json(testmessage as Message);
+
+		console.log(message);
+		res.status(200).json(message as Message);
 	    } catch(error){next(error) }
 	});
 
