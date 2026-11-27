@@ -6,11 +6,28 @@ import { PageEvent, MatPaginatorModule} from '@angular/material/paginator';
 import { LayoutpagegroupComponent } from '../layoutpagegroup/layoutpagegroup.component';
 import { Aspectofview } from '../aspectofview.llm';
 @Component({
-  selector: 'bw-layoutdirector',
-  standalone: false,
-  styleUrl: './layoutdirector.component.scss',
-  templateUrl: './layoutdirector.component.html',
-  encapsulation:ViewEncapsulation.Emulated,
+    selector: 'bw-layoutdirector',
+    standalone: false,
+    host:{'[style.--downwardtop]':'downwardtop','[style.--downwardleft]':'downwardleft',
+	  '[style.--upwardtop]':'upwardtop','[style.--upwardleft]':'upwardleft'
+	 },
+    styles:[`.layoutdirectorbuttonup{
+top:var(--upwardtop);
+left:var(--upwardleft);
+width:50;
+height:50;
+}
+.layoutdirectorbuttondown{
+top:var(--downwardtop);
+left:var(--downwardleft);
+width:50;
+height:50;
+}
+`],
+    
+    styleUrl: './layoutdirector.component.scss',
+    templateUrl: './layoutdirector.component.html',
+    encapsulation:ViewEncapsulation.Emulated,
 })
 
 
@@ -18,21 +35,23 @@ export class LayoutdirectorComponent {
     @Input() layoutpagecube!:any;
     public aview = inject(Aspectofview);
     layoutpagecubeed:any=[];
-    
     @ViewChild('pcChild5',{read:ViewContainerRef}) containerref!:ViewContainerRef;
     layoutpagegroupcomponentref!:ComponentRef<LayoutpagegroupComponent>;
     pageSize = signal(0);hidePageSize = signal(false);
     showPageSizeOptions = signal(true);
     pageSizeOptions = signal([1,2,3,4,5]);
     pageIndex = signal(0);
-
-    
     length = signal(50);
- 
     showFirstLastButtons = signal(true);
     disabled = signal(false);
-
     pageEvent = signal<PageEvent | undefined>(undefined);
+    isnotfirstpage:boolean=false;
+    isnotlastpage:boolean=true;
+
+    get downwardleft(){return window.innerWidth/2.0+"px"; }
+    get downwardtop(){return 0+"px";}
+    get upwardleft(){return window.innerWidth/2.0+"px"; }
+    get upwardtop(){return window.innerHeight-50+"px";}    
 
     handlePageEvent(e: PageEvent) {
 	this.pageEvent.set(e);

@@ -6,7 +6,7 @@ import { SVGComponent } from '../svg/svg.component';
   selector: 'bw-genom',
     standalone: false,
     host:{'[style.--genomheight]':'genomht','[style.--genomwidth]':'genomwh'},
-    styles:[`.genom{display: block;
+    styles:[`.genom{display: flex;align-items:center;
 height:var(--genomheight);
 width:var(--genomwidth)} .genom::before{content:"🧬"}`],
   styleUrl: './genom.component.scss',

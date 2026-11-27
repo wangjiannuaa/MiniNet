@@ -11,7 +11,7 @@ export class Aspectofview {
     private _layoutpageheight:number=600;
     private _layoutpagewidth:number=1100;
     private _layoutpagecapacity:number=1;
-    private _layoutpagegroupquote:number=1;
+    private _layoutpagegroupquote:number=5;
     constructor(){}
     public get LAYOUTPAGEGROUPQUOTE() {
     return this._layoutpagegroupquote;

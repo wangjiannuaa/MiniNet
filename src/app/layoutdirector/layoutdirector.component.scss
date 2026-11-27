@@ -7,8 +7,6 @@
     container-background-color: grey,
   ));
 }
-
-
 .toolbar {
   display: flex;
   gap: 16px;
@@ -18,17 +16,14 @@
   flex: 1 1 auto;
 }
 .layoutdirector{
-display:block;width:100%;
+    display:block;
+    width:100%;
 }
-.layoutdirectorbuttonup{
-    position:absolute;
-    top:50px;
-    left:1100px;
+.layoutdirectorbuttonup {
+    position:fixed;
     background-color: greenyellow;
 }
 .layoutdirectorbuttondown{
-    position:absolute;
-    top:50px;
-    left:1140px;
+    position:fixed;
     background-color: greenyellow;
 }

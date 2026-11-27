@@ -20,15 +20,20 @@
 </div>
 
 <div>
+  @if (isnotfirstpage){
   <div class="layoutdirectorbuttonup">
       <button matIconButton aria-label="换到上一组">
         <mat-icon>arrow_upward</mat-icon>
       </button>
   </div>
+  }
+
+   @if (isnotlastpage){
   <div class="layoutdirectorbuttondown">
       <button matIconButton aria-label="换到下一组">
         <mat-icon>arrow_downward</mat-icon>
       </button>
   </div>
+  }
 </div>
 </div>
