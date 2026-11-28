@@ -48,7 +48,7 @@ export class LayoutdirectorComponent {
     isnotfirstpage:boolean=false;
     isnotlastpage:boolean=true;
 
-    get downwardleft(){return window.innerWidth/2.0+"px"; }
+    get downwardleft(){return window.innerWidth/2.0+"px";}
     get downwardtop(){return window.innerHeight-50+"px";}
     get upwardleft(){return window.innerWidth/2.0+"px";}
     get upwardtop(){return 0+"px";}
@@ -73,10 +73,6 @@ export class LayoutdirectorComponent {
 	    	this.layoutpagegroupcomponentref.setInput('layoutpagegroup',
 							  this.layoutpagecubeed[this.pageIndex()]);
 	}
-
-	
-
-	
     }
 
     setPageSizeOptions(setPageSizeOptionsInput: string) {
@@ -87,15 +83,15 @@ export class LayoutdirectorComponent {
 
     constructor(){}
     ngOnInit():void{
+	let thiscomponent=this;
+	window.addEventListener("scroll",(event)=> {
 
-    }
-    onScroll(event: Event):void{
+	    if(thiscomponent.isnotfirstpage){
+	}
+	    if(thiscomponent.isnotlastpage){}
+	});}
 
-    }
-    
     ngAfterContentInit():void{
-
-
 	this.layoutpagecubeed =this.pagerize(this.layoutpagecube);
 	this.pageSize.set(this.aview.LAYOUTPAGECAPACITY*this.aview.LAYOUTPAGEGROUPQUOTE);
 	this.length.set(this.layoutpagecube.length);
@@ -124,23 +120,16 @@ export class LayoutdirectorComponent {
 
         let pagecapacity:number=this.aview.LAYOUTPAGECAPACITY;
 	let pagegroupquote:number=this.aview.LAYOUTPAGEGROUPQUOTE;
-	
 	let page:any=[];//cab
 	let data:any=[];//aim building
 	let pagegroup:any=[];//train
-
 	(messagelist as []).forEach(function(item:{},index:number){
-       
-	
-
 	    let wherepage:number = index%(pagecapacity);//0--pagecapacity
 	    let whatpage:number = Math.floor(index/pagecapacity);
 		    whatpage = whatpage%pagegroupquote;//0--pagegroupquote
 	    let whatgroup:number = Math.floor(index/pagecapacity);
 	    whatgroup = Math.floor(whatgroup/pagegroupquote);
-		
 		page.splice(wherepage,0,item);
-
 	    if((wherepage == (pagecapacity-1) && page.length == pagecapacity) || (index+1) == messagelist.length )//full or null
 		{pagegroup.splice(whatpage,0,page);page=[];}
 	    if((whatpage == (pagegroupquote-1) && pagegroup.length == pagegroupquote) || (index+1) == messagelist.length )
@@ -155,21 +144,23 @@ export class LayoutdirectorComponent {
 	let ycoord=window.pageYOffset-(this.aview.LAYOUTPAGEHEIGHT*this.aview.LAYOUTPAGEGROUPQUOTE)/40;
 	window.scroll(window.pageXOffset,ycoord);
 	
-	if(window.pageYOffset <= this.aview.LAYOUTPAGEHEIGHT*(this.aview.LAYOUTPAGEGROUPQUOTE-1)) {this.isnotlastpage=true;}else {this.isnotlastpage=false;}
-	if(window.pageYOffset >= this.aview.LAYOUTPAGEHEIGHT){ this.isnotfirstpage=true;}
-	else {this.isnotfirstpage=false;}}
+	this.hideorshowlogics(this);}
     
     downward():void{
 	let ycoord=window.pageYOffset+(this.aview.LAYOUTPAGEHEIGHT*this.aview.LAYOUTPAGEGROUPQUOTE)/40;
 	window.scroll(window.pageXOffset,ycoord);
 
-	
-
-    if(window.pageYOffset <= this.aview.LAYOUTPAGEHEIGHT*(this.aview.LAYOUTPAGEGROUPQUOTE-1)) {this.isnotlastpage=true;}else {this.isnotlastpage=false;}
-	if(window.pageYOffset >= this.aview.LAYOUTPAGEHEIGHT){ this.isnotfirstpage=true;}
-	else {this.isnotfirstpage=false;}}
+	this.hideorshowlogics(this);
 
 
+   }
+
+
+    hideorshowlogics(thiscomponent:LayoutdirectorComponent):void{
+	    if(window.pageYOffset <= thiscomponent.aview.LAYOUTPAGEHEIGHT*(thiscomponent.aview.LAYOUTPAGEGROUPQUOTE-1)) {thiscomponent.isnotlastpage=true;}else {thiscomponent.isnotlastpage=false;}
+	if(window.pageYOffset >= thiscomponent.aview.LAYOUTPAGEHEIGHT){ thiscomponent.isnotfirstpage=true;}
+	else {thiscomponent.isnotfirstpage=false;}}
+ 
     
     
 }
