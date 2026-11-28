@@ -1,4 +1,4 @@
-import { Component,signal,AfterContentInit,AfterContentChecked,AfterViewInit,ViewContainerRef,ComponentRef,ViewChild,ViewEncapsulation,Input,AfterViewChecked,inject,OnInit } from '@angular/core';
+import { Component,signal,OnChanges,AfterContentInit,AfterContentChecked,AfterViewInit,ViewContainerRef,ComponentRef,ViewChild,ViewEncapsulation,Input,AfterViewChecked,inject,OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -49,9 +49,9 @@ export class LayoutdirectorComponent {
     isnotlastpage:boolean=true;
 
     get downwardleft(){return window.innerWidth/2.0+"px"; }
-    get downwardtop(){return 0+"px";}
-    get upwardleft(){return window.innerWidth/2.0+"px"; }
-    get upwardtop(){return window.innerHeight-50+"px";}    
+    get downwardtop(){return window.innerHeight-50+"px";}
+    get upwardleft(){return window.innerWidth/2.0+"px";}
+    get upwardtop(){return 0+"px";}
 
     handlePageEvent(e: PageEvent) {
 	this.pageEvent.set(e);
@@ -89,6 +89,10 @@ export class LayoutdirectorComponent {
     ngOnInit():void{
 
     }
+    onScroll(event: Event):void{
+
+    }
+    
     ngAfterContentInit():void{
 
 
@@ -106,6 +110,8 @@ export class LayoutdirectorComponent {
 	this.layoutpagegroupcomponentref=this.containerref.createComponent(LayoutpagegroupComponent);
 	this.layoutpagegroupcomponentref.setInput('layoutpagegroup',
 						  this.layoutpagecubeed[this.pageIndex()]);
+
+	
     }
     ngAfterViewChecked():void{
 
@@ -142,6 +148,29 @@ export class LayoutdirectorComponent {
 	
 	    });
 		    console.log("dt",data); return data;
-      }
+    }
+
+
+    upward():void{
+	let ycoord=window.pageYOffset-(this.aview.LAYOUTPAGEHEIGHT*this.aview.LAYOUTPAGEGROUPQUOTE)/40;
+	window.scroll(window.pageXOffset,ycoord);
+	
+	if(window.pageYOffset <= this.aview.LAYOUTPAGEHEIGHT*(this.aview.LAYOUTPAGEGROUPQUOTE-1)) {this.isnotlastpage=true;}else {this.isnotlastpage=false;}
+	if(window.pageYOffset >= this.aview.LAYOUTPAGEHEIGHT){ this.isnotfirstpage=true;}
+	else {this.isnotfirstpage=false;}}
+    
+    downward():void{
+	let ycoord=window.pageYOffset+(this.aview.LAYOUTPAGEHEIGHT*this.aview.LAYOUTPAGEGROUPQUOTE)/40;
+	window.scroll(window.pageXOffset,ycoord);
+
+	
+
+    if(window.pageYOffset <= this.aview.LAYOUTPAGEHEIGHT*(this.aview.LAYOUTPAGEGROUPQUOTE-1)) {this.isnotlastpage=true;}else {this.isnotlastpage=false;}
+	if(window.pageYOffset >= this.aview.LAYOUTPAGEHEIGHT){ this.isnotfirstpage=true;}
+	else {this.isnotfirstpage=false;}}
+
+
+    
     
 }
+
